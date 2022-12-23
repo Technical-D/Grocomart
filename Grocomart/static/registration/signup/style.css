@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+
+:root{
+  --green:#27ae60;
+  --dark:#251749;
+  --shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+}
+
+*{
+    font-family: 'Nunito', sans-serif;
+    margin:0; padding:0;
+    box-sizing: border-box;
+    outline: none; border:none;
+    text-decoration: none;
+    transition: all .2s linear;
+
+}
+body {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+    height: 100%;
+}
+*::selection{
+  background:var(--green);
+  color:#fff;
+}
+section{
+    padding:2rem 9%;
+}
+span{
+    text-transform: none;
+}
+form a{
+    text-decoration: none;
+    cursor: pointer;
+    text-transform: none;
+}
+form a:hover{
+    color: var(--dark);
+}
+.logo{
+    color:var(--dark);
+    font-weight: bolder;
+    font-size: 2rem;
+}
+
+.logo i{
+    padding-right: .5rem;
+    color:var(--green);
+}
+.btn-primary{
+    display: inline-block;
+    margin-top: 1rem;
+    background:var(--green);
+    color:#fff;
+    padding:.3rem 3rem;
+    font-size: 1.4rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: .5rem;
+    font-weight: bold;
+    border: var(--green);
+    --bs-btn-active-bg: var(--dark);
+}
+
+.btn:hover{
+    background:var(--dark);    
+}
+.heading{
+    text-align: center;
+    color:var(--black);
+    text-transform: uppercase;
+    padding:1rem;
+    font-size: 1.6rem;
+    margin: 1.2rem 0 0;
+}
+
+.heading span{
+    color:var(--green);
+    text-transform: uppercase;
+}
+.form-signup {
+    max-width: 330px;
+    padding: 15px;
+    text-align: center;
+}
+  
+.form-signup .form-floating:focus-within {
+    z-index: 2;
+}
+.form-signup .fname {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signup .lname {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.form-signup input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signup input[type="tel"]{
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.form-signup .pswd {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signup .cpswd {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.text-muted {
+    margin-top: 20px;
+}
+.cmsg, .tmsg{
+    color: red;
+    text-align: start;
+}
+@media(max-width: 600px){
+    
+    .form-signup{
+        padding: 5px;
+        margin: 46px 10px;
+    
+    }
+}

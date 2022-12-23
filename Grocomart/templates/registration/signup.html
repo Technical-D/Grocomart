@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <!-- Icon CDN -->
+    <script src="https://kit.fontawesome.com/f6f8f493f3.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- Css -->
+    <link rel="stylesheet" href={% static 'registration/signup/style.css' %}>
+</head>
+<body>
+    <section class="form-signup w-100 m-auto">
+        <form method="post">
+        {% csrf_token %}
+        <a class="logo"><i class="fas fa-shopping-basket"></i>Grocomart</a>
+          <h1 class=" heading">Please <span>signup</span></h1>
+          
+          <div class="form-floating">
+            <input type="text" class="form-control fname" id="floatingInput" placeholder="First Name" name="first_name" required autofocus>
+            <label for="floatingInput">First Name</label>
+          </div>
+          <div class="form-floating">
+            <input type="text" class="form-control lname" id="floatingInput" placeholder="Last Name" name="last_name" required autofocus>
+            <label for="floatingInput">Last Name</label>
+          </div>
+          <div class="form-floating">
+            <input type="email" class="form-control" id="floatingInput" placeholder="Email"  name="email" required>
+            <label for="floatingInput">Email</label>
+          </div>
+          <div class="form-floating">
+            <input type="tel" class="form-control tel" id="floatingInput" placeholder="Mobile No." name="mobile" required>
+            <label for="floatingInput">Mobile No.</label>
+          </div>
+          <div class="tmsg"></div>
+          <div class="form-floating">
+            <input type="password" class="form-control pswd" id="floatingPassword" placeholder="Password" name="password1" required>
+            <label for="floatingPassword">Password</label>
+          </div>
+          <div class="form-floating">
+            <input type="password" class="form-control cpswd" id="floatingCPassword" placeholder="Confirm Password" name="password2" required>
+            <label for="floatingCPassword">Confirm Password</label>
+          </div>
+          <div class="cmsg"></div>
+          {% for field in signup_form %}
+              <ul class="cmsg">
+              {% for error in field.errors %}
+                <li style="color: red">{{ error }}</li>
+              {% endfor %}
+              </ul>
+          {% endfor %}
+          {% if signup_form.non_field_errors %}
+          <div class="cmsg">
+              <li>{{signup_form.non_field_errors}}</li>
+          </div>
+
+          {% endif %}
+
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Signup</button>
+          Already a user?<a href={% url 'login' %}  class="fp"> Login</a>
+          
+          <p class=" mb-3 text-muted">&copy;2023 Grocomart</p>
+        </form>
+      </section>
+
+      <!-- JS -->
+      <script src={% static 'registration/signup/script.js' %}></script>
+</body>
+
+</html>

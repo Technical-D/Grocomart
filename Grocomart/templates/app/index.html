@@ -1,0 +1,206 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- home  -->
+
+<section class="home" id="home" style="margin-top: 83px;">
+
+    <div class="image">
+        <img src={% static 'images/home.jpg' %} alt="">
+    </div>
+
+    <div class="content">
+        <span>fresh and healthy</span>
+        <h3>your daily need products</h3>
+        <a href="#product" class="btn">get started</a>
+    </div>
+
+</section>
+
+<!-- category  -->
+
+<section class="category" id="category">
+
+<h1 class="heading">shop by <span>category</span></h1>
+
+<div class="box-container">
+
+    
+    <div class="box">
+        <h3>dairy</h3>
+        <p>upto 44% off</p>
+        <img src={% static 'images/dairy.png' %} alt="">
+        <a href="{% url 'category' %}#dairy" class="btn">shop now</a>
+    </div>
+    
+    <div class="box">
+        <h3>vegitables</h3>
+        <p>upto 50% off</p>
+        <img src={% static 'images/vegetable.jpg' %} alt="">
+        <a href="{% url 'category' %}#vegetable" class="btn">shop now</a>
+    </div>
+    <div class="box">
+        <h3>fruits</h3>
+        <p>upto 12% off</p>
+        <img src={% static 'images/fruits.jpg' %} alt="">
+        <a href="{% url 'category' %}#fruit" class="btn">shop now</a>
+    </div>
+    <div class="box">
+        <h3>grains</h3>
+        <p>upto 20% off</p>
+        <img src={% static 'images/grains.jpg' %} alt="">
+        <a href="{% url 'category' %}#grains" class="btn">shop now</a>
+    </div>
+    <div class="box">
+        <h3>pulses</h3>
+        <p>upto 25% off</p>
+        <img src={% static 'images/pulses.jpg' %} alt="">
+        <a href="{% url 'category' %}#pulses" class="btn">shop now</a>
+    </div>
+    <div class="box">
+        <h3>snacks</h3>
+        <p>upto 40% off</p>
+        <img src={% static 'images/snacks.jpg' %} alt="">
+        <a href="{% url 'category' %}#snacks" class="btn">shop now</a>
+    </div>
+    <div class="box">
+        <h3>edible oils</h3>
+        <p>upto 15% off</p>
+        <img src={% static 'images/edible-oils.jpg' %} alt="">
+        <a href="{% url 'category' %}#oils" class="btn">shop now</a>
+    </div>
+    <div class="box">
+        <h3>biscuits</h3>
+        <p>upto 46% off</p>
+        <img src={% static 'images/biscuits.jpg' %} alt="">
+        <a href="{% url 'category' %}#biscuits" class="btn">shop now</a>
+    </div>
+</div>
+
+</section>
+
+<!-- product  -->
+
+<section class="product" id="product" >
+
+    <h1 class="heading">latest <span>products</span></h1>
+    
+    <div class="box-container">
+
+        {% for product in products %}
+        <div class="box">
+            <span class="discount">-{{product.get_discount|floatformat:0}}%</span>
+            <img src={{product.imageUrl}} alt="">
+            <h3>{{product.name}}</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price"> ₹{{product.d_price|floatformat:2}} <span> ₹{{product.o_price|floatformat:2}} </span> </div>
+            <div class="quantity">
+                <span>quantity : </span>
+                <input type="number" min="1" max="1000" value="1">
+                <span> /{{product.unit}} </span>
+            </div>
+            <a href="#" class="btn">add to cart</a>
+        </div>
+          
+        {% endfor %}
+        
+    </div>
+</section>
+<!-- Review  -->
+<section class="reviews" id="reviews">
+<h1 class="heading">popular <span>reviews</span></h1>
+<div class="box-container">
+    <div class="review">
+        <div class="top">
+            <img src={% static 'images/user1.jpg' %} alt="">
+            
+            <div>
+            <h3>Jhon Doe</h3>
+            <span>@jhondoe</span>
+            <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+            </div>
+        </div>
+        
+        <div class="comment">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem laudantium voluptatem voluptates ullam voluptate illo error reprehenderit nam numquam optio.</p>
+        </div>
+    </div>
+    <div class="review">
+        <div class="top">
+            <img src={% static 'images/user2.jpg' %} alt="">
+            <div>
+            <h3>Masha Raymer</h3>
+            <span>@raymermasha</span>
+            <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+            </div>
+        </div>
+        
+        <div class="comment">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem laudantium voluptatem voluptates ullam voluptate illo error reprehenderit nam numquam optio.</p>
+        </div>
+    </div>
+    <div class="review">
+        <div class="top">
+            <img src={% static 'images/user3.jpg' %} alt="">
+            <div>
+            <h3>Oliver Olivia</h3>
+            <span>@oliverovilia</span>
+            <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+            </div>
+        </div>
+        
+        <div class="comment">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem laudantium voluptatem voluptates ullam voluptate illo error reprehenderit nam numquam optio.</p>
+        </div>
+    </div>
+</div>
+
+</section>
+
+<!-- contact us  -->
+
+<section class="contact" id="contact">
+
+<h1 class="heading"> contact <span>us</span> </h1>
+
+<form action="">
+
+    <div class="inputBox">
+        <input type="text" placeholder="Name">
+        <input type="email" placeholder="Email">
+        <input type="text" placeholder="Subject">
+    </div>
+
+    <textarea placeholder="Message" name="" id="" cols="30" rows="10"></textarea>
+
+    <input type="submit" value="send message" class="btn">
+
+</form>
+
+</section>
+{% endblock content %}

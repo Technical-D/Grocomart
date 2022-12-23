@@ -1,0 +1,35 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- Profile section -->
+<section class="profile">
+    <h1 class="heading">Account <span>Information</span> </h1>
+    <div class="box-container">
+        <hr>
+        <div class="field">
+            <h1>Personal Information</h1>
+            <p>First Name</p>
+            <input type="text" value="{{customer.first_name}}" readonly>
+
+            <p>Last Name</p>
+            <input type="text" value="{{customer.last_name}}" readonly>
+
+            <p>Email</p>
+            <input type="email" value="{{customer.email}}" readonly>
+            <p>Mobile No.</p>
+            <input type="text" value="{{customer.mobile}}" readonly>
+        </div>
+        <hr>
+        <div class="field">
+            <h1>Address</h1>
+        </div>
+        <hr>
+        <div class="field">
+            <h1>Order History</h1>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

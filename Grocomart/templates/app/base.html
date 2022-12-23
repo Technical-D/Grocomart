@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocomart</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href={% static 'app/css/style.css' %}>
+    <!-- Icon CDN -->
+    <script src="https://kit.fontawesome.com/f6f8f493f3.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <!-- header section  -->
+
+<header>
+    <div class="header">
+
+        <div id="menu-bar" class="fas fa-bars"></div>
+        <a  class="logo"><i class="fas fa-shopping-basket"></i>Grocomart</a>
+
+        <nav class="navbar">
+            <a href={% url 'index' %}>home</a>
+            <a href={% url 'category' %}>category</a>
+            <a href={% url 'products' %}>products</a>
+            <a href="#contact">contact</a>
+            <a href="#footer">about</a>
+
+        </nav>
+
+        
+        
+        {% if request.user.is_authenticated %}
+            <div class="icons">
+                <a href="#product" class="fas fa-shopping-cart"></a>
+                <a href={% url 'profile' %} class="fas fa-user-circle"></a>
+                <a href={% url 'logout' %} class="fa-solid fa-right-from-bracket"></a>
+            </div>
+        {% else %}
+            <div>
+                <a href={% url 'login' %} class="btn">Login</a>
+            </div>
+        {% endif %}
+    </div>
+</header>
+<br>
+
+<!-- Contents of different pages -->
+    {% block content %}
+      
+    {% endblock content %}
+
+<!-- footer   -->
+
+<section class="footer" id="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <a href="#" class="logo"><i class="fas fa-shopping-basket"></i>Grocomart</a>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam culpa sit enim nesciunt rerum laborum illum quam error ut alias!</p>
+            <div class="share">
+                <a href="#" class=" fab fa-facebook-f"></a>
+                <a href="#" class=" fab fa-twitter"></a>
+                <a href="#" class=" fab fa-instagram"></a>
+                <a href="#" class=" fab fa-linkedin"></a>
+            </div>
+        </div>
+        
+        <div class="box">
+            <h3>our location</h3>
+            <div class="links">
+                <a href="#">mumbai</a>
+                <a href="#">pune</a>
+                <a href="#">nashik</a>
+                <a href="#">nagpur</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3>quick links</h3>
+            <div class="links">
+                <a href={% url 'index' %}>home</a>
+                <a href={% url 'category' %}>category</a>
+                <a href={% url 'products' %}>products</a>
+                <a href="#contact">contact</a>
+                <a href="#reviews">review</a>
+                <a href="#footer">about</a>
+            </div>
+        </div>
+
+
+    </div>
+
+    <h1 class="copyright">&#169;2023 <span>Grocomart</span> .inc | All right reserved!</h1>
+
+</section>
+<div class="toTop">
+    <a><i class="fa-solid fa-arrow-up"></i></a>
+</div>
+
+
+</body>
+    <script src={% static 'app/js/script.js' %}></script>
+</html>
