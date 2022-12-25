@@ -1,0 +1,58 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block content %}
+  <section class="cart" style="margin-top: 83px;">
+        <div class="box-container">
+            <a href={% url 'index' %} style="margin-bottom: 2rem;" class="btn"><i class="fa-solid fa-arrow-left-long"></i> Continue Shopping</a>
+
+            <div class="box-1">
+                <p><span>Items:</span> 5</p>
+                <p><span>total:</span> $1000</p>
+                <a style="margin-top: 0;" class="btn">checkout</a>
+            </div>
+            <div class="box-2">
+                <div class="row" style="font-weight: bold;">
+                    <p>product</p>
+                    <p>name</p>
+                    <p>price</p>
+                    <p>quantity</p>
+                    <p>total</p>
+                </div>
+                <hr>
+                <div class="row">
+                    <img src="/media/almond.png" alt="" height="100rem" width="100rem">
+                    <p>almond</p>
+                    <p>$25</p>
+                    <p>
+                        <a href=""><i class="fa-solid fa-plus"></i></a>
+                        <span>3</span>
+                        <a href=""><i class="fa-solid fa-minus"></i></a>
+                    </p>
+                    <p>$1000</p>
+                </div>
+                <div class="row">
+                    <img src="/media/apple.png" alt="" height="100rem" width="100rem">
+                    <p>Apple</p>
+                    <p>$25</p>
+                    <p>
+                        <a href=""><i class="fa-solid fa-plus"></i></a>
+                        <span>3</span>
+                        <a href=""><i class="fa-solid fa-minus"></i></a>
+                    </p>
+                    <p>$1000</p>
+                </div>
+                <div class="row">
+                    <img src="/media/banana.png" alt="" height="100rem" width="100rem">
+                    <p>banana</p>
+                    <p>$25</p>
+                    <p>
+                        <a href=""><i class="fa-solid fa-plus"></i></a>
+                        <span>3</span>
+                        <a href=""><i class="fa-solid fa-minus"></i></a>
+                    </p>
+                    <p>$1000</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

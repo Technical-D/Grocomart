@@ -34,7 +34,7 @@
         
         {% if request.user.is_authenticated %}
             <div class="icons">
-                <a href="#product" class="fas fa-shopping-cart"></a>
+                <a href={% url 'cart' %} class="fas fa-shopping-cart"></a>
                 <a href={% url 'profile' %} class="fas fa-user-circle"></a>
                 <a href={% url 'logout' %} class="fa-solid fa-right-from-bracket"></a>
             </div>

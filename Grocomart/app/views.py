@@ -3,10 +3,11 @@ from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponse
 from app.forms import SignupForm, AccountAuthenticationForm
 from app.models import Customer, Product
+import random
 # Create your views here.
 
 def index(request):
-    products = Product.objects.all()
+    products = Product.objects.order_by('?')[:9]
 
     return render(request, 'app/index.html', {'products':products})
 
@@ -87,3 +88,8 @@ def category(request):
 
 
     return render(request, 'app/category.html', context)
+
+def cart_view(request):
+
+    return render(request, 'app/cart.html', {})
+
