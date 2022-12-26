@@ -422,54 +422,168 @@ a:active {
     color:var(--green);
 }
 
-.reviews .box-container{
-    display: flex;
-    gap:1.5rem;
-    flex-wrap: wrap;
+.review .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+    gap:2rem;
 }
-.reviews .box-container .review{
-    flex:1 1 30rem;
+
+.review .box-container .box{
+    border:.1rem solid rgba(0,0,0,.3);
+    box-shadow: var(--shadow);
+    border-radius: .5rem;
+    padding:2.5rem;
+    background: #fff;
     text-align: center;
-    padding:2rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.review .box-container .box img{
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border:.5rem solid #fff;
+}
+
+.review .box-container .box h3{
+    color:#fff;
+    font-size: 2.2rem;
+    padding:.5rem 0;
+}
+
+.review .box-container .box .stars i{
+    color:gold;
+    font-size: 1.5rem;
+}
+
+.review .box-container .box .text{
+    color:var(--dark);
+    line-height: 1.8;
+    font-size: 1.6rem;
+    padding-top: 4rem;
+}
+
+.review .box-container .box::before{
+    content: '';
+    position: absolute;
+    top:-4rem; left: 50%;
+    transform:translateX(-50%);
+    background:var(--green);
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    height: 25rem;
+    width: 120%;
+    z-index: -1;
+}
+/* Single product */
+
+.product_s .box-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    flex-wrap: wrap;
+    background-color: #fff;
     border:.1rem solid rgba(0,0,0,.3);
     border-radius: .5rem;
-    overflow: hidden;
-    box-shadow:var(--shadow) ;
 
 }
-.reviews .box-container .review .top{
+.product_s .box-container .img-box img{
+    width: 100%;
+    margin: 0 auto;
+}
+.product_s .box-container .img-box{
+    width: 420px;
+    height: 450px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    gap: 2rem;
 }
-.reviews .box-container .review .top img{
-    width: 8rem;
-    height:8rem;
-    border-radius: 50%;
+.product_s .box-container .info-box{
+    width: 420px;
+    height: 450px;
+    padding: 2.4rem;
 }
-.reviews .box-container .review .top h3{
-    font-size: 2.2rem;
-    color:var(--dark);
+.product_s .box-container .info-box h1{
+    font-size: 3rem;
 }
-.reviews .box-container .review .top span{
-    font-size: 1.6rem;
-    color:gray;
+.product_s .box-container .info-box p{
+    font-size: 1.8rem;
 }
-
-.reviews .box-container .review .star i{
-    padding:1rem .1rem;
+.product_s .box-container .info-box .price{
+    font-size: 2rem;
+    color:#333;
+    padding:.5rem 0;
+}
+.product_s .box-container .info-box .price span{
+    font-size: 1.5rem;
+    color:#999;
+    text-decoration: line-through;
+}
+.product_s .box-container .info-box .dis{
+    font-size: 1.5rem;
+}
+.product_s .box-container .info-box .dis span{
+    color: var(--green);
+}
+.product_s .box-container .info-box .stock{
+    color: var(--green);
+    font-size:1.3rem ;
+}  
+.product_s .box-container .info-box .groco{
+    font-size: 1.5rem;
+}
+.product_s .box-container .info-box .groco span{
+    color: var(--green);
+} 
+.product_s .box-container .info-box .quantity{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-top: 1rem;
+    padding-bottom: .5rem;
+}
+.product_s .box-container .info-box .quantity span{
+    padding:0.7rem 0;
     font-size: 1.7rem;
-    color:gold;
 }
-
-.reviews .box-container .review p{
+.product_s .box-container .info-box .quantity input{
+    border:.1rem solid rgba(0,0,0,.3);
     font-size: 1.3rem;
+    font-weight: bolder;
     color:var(--dark);
-    padding:.7rem 0;
-    text-align: start;
+    padding:.5rem;
+    margin: 0 .5rem;
+    background:rgba(0,0,0,.05);
 }
+.product_s .box-container .info-box .desc{
+    color: var(--dark);
+    font-size: 1.2rem;
+}
+.product_s .box-container .info-box .discount span{
 
+    color:var(--green);
+    padding:.5rem 0;
+    font-size: 1.5rem;
+}
+.product_s .box-container .info-box .btn{
+    display: block;
+    width: 70%;
+}
+/* .product_s .box-container hr{
+    border-width: 1px;
+  border-style: solid;
+  color: rgb(0, 146, 247);
+  display: inline-block;
+  height: 18px;
+  width: 100%;
+  border-radius: 30px;
+  vertical-align: middle;
+} */
+/* To the top button */
 .toTop{
     background-color: var(--green);
     width: 5rem;

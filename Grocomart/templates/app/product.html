@@ -2,20 +2,25 @@
 {% load static %}
 {% block content %}
 
-<section class="product" id="product" style="margin-top: 83px;">
+<section class="product_s" style="margin-top: 83px;">
     <div class="box-container">
-        <div class="box">
-            <span class="discount">-{{product.get_discount|floatformat:0}}%</span>
-            <a href={% url 'products' %}{{product.id}} style="cursor:default;"><img src={{product.imageUrl}} alt="" ></a>
-            <h3>{{product.name}}</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
+        <div class="img-box">
+            <img src="{{product.imageUrl}}" alt="">
+        </div>
+        <hr>
+        <div class="info-box">
+            <h1 >{{product.name}}</h1>
+            <p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet saepe necessitatibus dignissimos omnis dolores molestiae ullam accusantium consequatur, officia voluptatem.</p>
+            <div class="price">
+                 ₹ {{product.d_price|floatformat:2}} 
+                 <br>
+                 <span>₹{{product.o_price|floatformat:2}}</span>
             </div>
-            <div class="price"> ₹{{product.d_price|floatformat:2}} <span> ₹{{product.o_price|floatformat:2}} </span> </div>
+            <p class="discount"><span>{{product.get_discount|floatformat:0}}% off</span></p>
+            <p class="dis">you save: <span>₹{{product.saved|floatformat:0}}</span> Inclusive of all taxes</p><br>
+            <p class="stock">in stock</p>
+            <br>
+            <p class="groco">sold by <span>Grocomart</span></p>
             <div class="quantity">
                 <span>quantity : </span>
                 <input type="number" min="1" max="1000" value="1">

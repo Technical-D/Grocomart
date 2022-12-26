@@ -30,50 +30,50 @@
     <div class="box">
         <h3>dairy</h3>
         <p>upto 44% off</p>
-        <img src={% static 'images/dairy.png' %} alt="">
+        <a href="{% url 'category' %}dairy"><img src={% static 'images/dairy.png' %} alt=""></a>
         <a href="{% url 'category' %}dairy" class="btn">shop now</a>
     </div>
     
     <div class="box">
         <h3>vegitables</h3>
         <p>upto 50% off</p>
-        <img src={% static 'images/vegetable.jpg' %} alt="">
+        <a href="{% url 'category' %}vegetables"><img src={% static 'images/vegetable.jpg' %} alt=""></a>
         <a href="{% url 'category' %}vegetables" class="btn">shop now</a>
     </div>
     <div class="box">
         <h3>fruits</h3>
         <p>upto 12% off</p>
-        <img src={% static 'images/fruits.jpg' %} alt="">
+        <a href="{% url 'category' %}fruits"><img src={% static 'images/fruits.jpg' %} alt=""></a>
         <a href="{% url 'category' %}fruits" class="btn">shop now</a>
     </div>
     <div class="box">
         <h3>grains</h3>
         <p>upto 20% off</p>
-        <img src={% static 'images/grains.jpg' %} alt="">
+        <a href="{% url 'category' %}grains"><img src={% static 'images/grains.jpg' %} alt=""></a>
         <a href="{% url 'category' %}grains" class="btn">shop now</a>
     </div>
     <div class="box">
         <h3>pulses</h3>
         <p>upto 25% off</p>
-        <img src={% static 'images/pulses.jpg' %} alt="">
+        <a href="{% url 'category' %}pulses"><img src={% static 'images/pulses.jpg' %} alt=""></a>
         <a href="{% url 'category' %}pulses" class="btn">shop now</a>
     </div>
     <div class="box">
         <h3>snacks</h3>
         <p>upto 40% off</p>
-        <img src={% static 'images/snacks.jpg' %} alt="">
+        <a href="{% url 'category' %}snacks"><img src={% static 'images/snacks.jpg' %} alt=""></a>
         <a href="{% url 'category' %}snacks" class="btn">shop now</a>
     </div>
     <div class="box">
         <h3>edible oils</h3>
         <p>upto 15% off</p>
-        <img src={% static 'images/edible-oils.jpg' %} alt="">
+        <a href="{% url 'category' %}edible oils"><img src={% static 'images/edible-oils.jpg' %} alt=""></a>
         <a href="{% url 'category' %}edible oils" class="btn">shop now</a>
     </div>
     <div class="box">
         <h3>biscuits</h3>
         <p>upto 46% off</p>
-        <img src={% static 'images/biscuits.jpg' %} alt="">
+        <a href="{% url 'category' %}biscuits"><img src={% static 'images/biscuits.jpg' %} alt=""></a>
         <a href="{% url 'category' %}biscuits" class="btn">shop now</a>
     </div>
 </div>
@@ -113,72 +113,54 @@
         
     </div>
 </section>
-<!-- Review  -->
-<section class="reviews" id="reviews">
-<h1 class="heading">popular <span>reviews</span></h1>
-<div class="box-container">
-    <div class="review">
-        <div class="top">
+<!-- review section starts  -->
+
+<section class="review" id="review">
+    
+    <h1 class="heading"> customer's <span>review</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
             <img src={% static 'images/user1.jpg' %} alt="">
-            
-            <div>
-            <h3>Jhon Doe</h3>
-            <span>@jhondoe</span>
-            <div class="star">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-        </div>
+            <h3>Jean Kirstein</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
             </div>
+            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam sapiente nihil aperiam? Repellat sequi nisi aliquid perspiciatis libero nobis rem numquam nesciunt alias sapiente minus voluptatem, reiciendis consequuntur optio dolorem!</p>
         </div>
-        
-        <div class="comment">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem laudantium voluptatem voluptates ullam voluptate illo error reprehenderit nam numquam optio.</p>
-        </div>
-    </div>
-    <div class="review">
-        <div class="top">
+
+        <div class="box">
             <img src={% static 'images/user2.jpg' %} alt="">
-            <div>
-            <h3>Masha Raymer</h3>
-            <span>@raymermasha</span>
-            <div class="star">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-        </div>
+            <h3>sahsa blouse</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
             </div>
+            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam sapiente nihil aperiam? Repellat sequi nisi aliquid perspiciatis libero nobis rem numquam nesciunt alias sapiente minus voluptatem, reiciendis consequuntur optio dolorem!</p>
         </div>
-        
-        <div class="comment">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem laudantium voluptatem voluptates ullam voluptate illo error reprehenderit nam numquam optio.</p>
-        </div>
-    </div>
-    <div class="review">
-        <div class="top">
+
+        <div class="box">
             <img src={% static 'images/user3.jpg' %} alt="">
-            <div>
-            <h3>Oliver Olivia</h3>
-            <span>@oliverovilia</span>
-            <div class="star">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-        </div>
+            <h3>Connie Springer</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
             </div>
+            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam sapiente nihil aperiam? Repellat sequi nisi aliquid perspiciatis libero nobis rem numquam nesciunt alias sapiente minus voluptatem, reiciendis consequuntur optio dolorem!</p>
         </div>
-        
-        <div class="comment">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem laudantium voluptatem voluptates ullam voluptate illo error reprehenderit nam numquam optio.</p>
-        </div>
+
     </div>
-</div>
 
 </section>
 

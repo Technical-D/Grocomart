@@ -97,7 +97,10 @@ class Product(models.Model):
     def get_discount(self):
         discont = ((self.o_price - self.d_price) / self.o_price) * 100
         return discont
-    
+    @property
+    def saved(self):
+        save = self.o_price - self.d_price
+        return save
 
     @property
     def imageUrl(self):
