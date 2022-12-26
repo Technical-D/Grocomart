@@ -60,15 +60,20 @@ def signup_view(request):
     return render(request, 'registration/signup.html', {'signup_form':form})
 
 def profile(request):
-    user_id = request.user.id
-    customer = Customer.objects.get(pk=user_id)
+    if request.user.is_authenticated:
+        user_id = request.user.id
+        customer = Customer.objects.get(pk=user_id)
+    else:
+        return redirect('login')
     return render(request, 'app/profile.html', {'customer':customer})
 
+def product_view(request, id):
+    product_id = id
+    product = Product.objects.get(pk=product_id)
+
+    return render(request, 'app/product.html', {'product':product})
 def products(request):
-    products = Product.objects.all()
-    for i in products:
-        star = i.star
-        print(star)
+    products = Product.objects.order_by('?').all()
 
     return render(request, 'app/products.html', {'products':products})
 
@@ -85,9 +90,14 @@ def category(request):
 
     context = {'vegetables':vegetables, 'fruits':fruits, 'dairy': dairy, 'oils':oils,'snacks':snacks,'grains':grains,'pulses':pulses,'biscuits':biscuits}
 
-
-
     return render(request, 'app/category.html', context)
+
+
+def categories_view(request, name):
+    category  = name
+    p = Product.objects.filter(category=category).all()
+
+    return render(request, 'app/categories.html', {'products':p, 'category':category})
 
 def cart_view(request):
 

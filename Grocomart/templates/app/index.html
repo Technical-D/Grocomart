@@ -13,7 +13,7 @@
     <div class="content">
         <span>fresh and healthy</span>
         <h3>your daily need products</h3>
-        <a href="#product" class="btn">get started</a>
+        <a href={% url 'products' %} class="btn">get started</a>
     </div>
 
 </section>
@@ -31,50 +31,50 @@
         <h3>dairy</h3>
         <p>upto 44% off</p>
         <img src={% static 'images/dairy.png' %} alt="">
-        <a href="{% url 'category' %}#dairy" class="btn">shop now</a>
+        <a href="{% url 'category' %}dairy" class="btn">shop now</a>
     </div>
     
     <div class="box">
         <h3>vegitables</h3>
         <p>upto 50% off</p>
         <img src={% static 'images/vegetable.jpg' %} alt="">
-        <a href="{% url 'category' %}#vegetable" class="btn">shop now</a>
+        <a href="{% url 'category' %}vegetables" class="btn">shop now</a>
     </div>
     <div class="box">
         <h3>fruits</h3>
         <p>upto 12% off</p>
         <img src={% static 'images/fruits.jpg' %} alt="">
-        <a href="{% url 'category' %}#fruit" class="btn">shop now</a>
+        <a href="{% url 'category' %}fruits" class="btn">shop now</a>
     </div>
     <div class="box">
         <h3>grains</h3>
         <p>upto 20% off</p>
         <img src={% static 'images/grains.jpg' %} alt="">
-        <a href="{% url 'category' %}#grains" class="btn">shop now</a>
+        <a href="{% url 'category' %}grains" class="btn">shop now</a>
     </div>
     <div class="box">
         <h3>pulses</h3>
         <p>upto 25% off</p>
         <img src={% static 'images/pulses.jpg' %} alt="">
-        <a href="{% url 'category' %}#pulses" class="btn">shop now</a>
+        <a href="{% url 'category' %}pulses" class="btn">shop now</a>
     </div>
     <div class="box">
         <h3>snacks</h3>
         <p>upto 40% off</p>
         <img src={% static 'images/snacks.jpg' %} alt="">
-        <a href="{% url 'category' %}#snacks" class="btn">shop now</a>
+        <a href="{% url 'category' %}snacks" class="btn">shop now</a>
     </div>
     <div class="box">
         <h3>edible oils</h3>
         <p>upto 15% off</p>
         <img src={% static 'images/edible-oils.jpg' %} alt="">
-        <a href="{% url 'category' %}#oils" class="btn">shop now</a>
+        <a href="{% url 'category' %}edible oils" class="btn">shop now</a>
     </div>
     <div class="box">
         <h3>biscuits</h3>
         <p>upto 46% off</p>
         <img src={% static 'images/biscuits.jpg' %} alt="">
-        <a href="{% url 'category' %}#biscuits" class="btn">shop now</a>
+        <a href="{% url 'category' %}biscuits" class="btn">shop now</a>
     </div>
 </div>
 
@@ -91,7 +91,7 @@
         {% for product in products %}
         <div class="box">
             <span class="discount">-{{product.get_discount|floatformat:0}}%</span>
-            <img src={{product.imageUrl}} alt="">
+            <a href={% url 'products' %}{{product.id}}><img src={{product.imageUrl}} alt=""></a>
             <h3>{{product.name}}</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>

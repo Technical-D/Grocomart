@@ -1,17 +1,16 @@
 {% extends "app/base.html" %}
 {% load static %}
+
 {% block content %}
-
-<section class="product" id="product" style="margin-top: 83px;">
-
-    <h1 class="heading"><span>products</span></h1>
-    
+<section class="product" id="product" style="margin-top: 83px;" id="vegetable">
+    <h1 class="heading"><span>{{category}}</span></h1>
     <div class="box-container">
+        
 
         {% for product in products %}
         <div class="box">
             <span class="discount">-{{product.get_discount|floatformat:0}}%</span>
-            <a href={% url 'products' %}{{product.id}} style="cursor:default;"><img src={{product.imageUrl}} alt="" ></a>
+            <img src={{product.imageUrl}} alt="">
             <h3>{{product.name}}</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
@@ -33,5 +32,4 @@
         
     </div>
 </section>
-  
 {% endblock content %}

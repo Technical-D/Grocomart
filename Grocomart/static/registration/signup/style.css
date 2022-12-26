@@ -41,6 +41,9 @@ form a{
 form a:hover{
     color: var(--dark);
 }
+input {
+    caret-color: var(--green);
+}
 .logo{
     color:var(--dark);
     font-weight: bolder;
