@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponse
-from app.forms import SignupForm, AccountAuthenticationForm, NewsletterForm
-from app.models import Customer, Product, Newsletter
-import random
+from app.forms import SignupForm, AccountAuthenticationForm, NewsletterForm, QueriesForm
+from app.models import Customer, Product
 # Create your views here.
 
 def index(request):
@@ -104,8 +103,21 @@ def cart_view(request):
     return render(request, 'app/cart.html', {})
 
 def contact(request):
+    context ={}
+    if request.POST:
+        if request.user.is_authenticated:
 
-    return render(request,'app/contact.html', {})
+            form = QueriesForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return render(request, 'app/sent.html')
+            else:
+                context['contact_form'] =form
+        else:
+            return HttpResponse('Please Login to send query!!')
+    else:
+        form = QueriesForm()
+    return render(request,'app/contact.html', {'contact_form':form})
 
 def about(request):
 

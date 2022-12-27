@@ -1,0 +1,17 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block content %}
+<section style="margin-top: 100px; height: 100vh;" class="sent">
+    <h3 class="heading"><span>Sent!!</span></h3>
+<p>we have recieved your query. We will try our best to solve your query. Thank you!!</p><br>
+<a href={% url 'index' %} class="btn">Go to Home Page</a>
+</section>
+<style>
+    .sent{
+        text-align: center;
+    }
+    .sent p{
+        font-size: 2rem;
+    }
+</style>
+{% endblock content %}

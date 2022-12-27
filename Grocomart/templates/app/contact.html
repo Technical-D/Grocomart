@@ -24,17 +24,28 @@
             <h1 class="heading">Email <span>form</span></h1>
             <hr>
             <p>we want to hear from you. please fill out above form</p>
-            <form action="">
-
+            <form action="" method="post">
+                {% csrf_token %}
                 <div class="inputBox">
-                    <input type="text" placeholder="Name"><br>
-                    <input type="email" placeholder="Email"><br>
-                    <input type="text" placeholder="Subject">
+                    <input type="text" placeholder="Name" name="name" required><br>
+                    <input type="email" placeholder="Email" name="email" required><br>
+                    <input type="text" placeholder="Subject" name="subject" required>
                 </div>
         
-                <textarea placeholder="Message" name="" id="" cols="30" rows="10"></textarea>
-        
-                <input type="submit" value="send message" class="btn">
+                <textarea placeholder="Message" id="" cols="30" rows="10" name="message" required></textarea>
+                <!-- {% for field in contact_form %}
+                <p>
+                {% for error in field.errors %}
+                    <p style="color: red">{{ error }}</p>
+                {% endfor %}
+                    </p>
+                {% endfor %}
+                {% if contact_form.non_field_errors %}
+                <div style="color: red">
+                    <p>{{contact_form.non_field_errors | striptags}}</p>
+                </div>
+                {% endif %} -->
+                <button type="submit" class="btn">send message</button>
         
             </form>
         </div>
