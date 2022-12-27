@@ -310,7 +310,37 @@ a:active {
 .product .box-container .box .btn{
     display: block;
 }
-
+.product .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    border-radius: .5rem;
+}
+.product .search-container  input{
+    display: block;
+    padding: 1rem;
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: var(--green);
+    text-transform: none;
+    margin: 0;
+    border: 0.1rem solid rgba(0,0,0,.3);
+    width: 35%;
+    border-radius: 0.8rem;
+}
+.product .search-container .btn{
+    margin: 0;
+    font-size: 1.7rem;
+    padding: 1rem;
+}
+.product #msg{
+    font-size: 2.4rem;
+    color: var(--dark);
+    font-weight: bold;
+    text-align: center;
+}
 /* Contact page */
 .contact .box-container {
     display: flex;
@@ -779,6 +809,9 @@ a:active {
     }
     .cart .box-container .box-2 .row p span{
         margin: 0;
+    }
+    .product #search{
+        width: 80%;
     }
 
 }
