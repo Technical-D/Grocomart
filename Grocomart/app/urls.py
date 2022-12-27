@@ -13,5 +13,6 @@ urlpatterns = [
     path('category/<str:name>', views.categories_view, name='categories'),
     path('cart/', views.cart_view, name='cart'),
     path('contact/', views.contact, name='contact'),
+    path('about/', views.about, name='about'),
 
 ]

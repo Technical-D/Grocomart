@@ -742,7 +742,39 @@ a:active {
 .cart .box-container hr{
     border-top: 1px solid var(--dark);
 }
+/* About us page */
+.about .box-container{
 
+    padding:4rem 2rem;
+    border-radius: .5rem;
+}
+.about .text{
+    font-size: 1.7rem;
+    padding: 2rem;
+    margin: 1rem 0 3rem;
+}
+.about .text span{
+    color: var(--green);
+}
+.about .text p:first-child{
+    font-size: 2.2rem;
+}
+
+.about .policy h3{
+    font-size: 2rem;
+}
+.about .policy p{
+    font-size: 1.4rem;
+}
+.about .policy {
+    font-size: 1.7=8rem;
+    padding: 2rem;
+    margin: 1rem 0 3rem;
+}
+.about .policy a{
+    color: var(--green);
+    text-transform: none;
+}
 
 
 /* media queries  */
@@ -771,6 +803,9 @@ a:active {
     .product_s .box-container .info-box{
         width: 100%;
         height: auto;
+    }
+    .product_s .box-container .info-box .btn{
+        width: 100%;
     }
 }
 
