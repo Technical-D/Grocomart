@@ -61,8 +61,9 @@
         <div class="box" style="flex-basis: 420px;">
             <a href="#" class="logo"><i class="fas fa-shopping-basket"></i>Grocomart</a>
             <p>join our newsletter for latest offers</p>
-            <form action="">
-                <input type="email" placeholder="enter your email">
+            <form action="/newsletter/" method="post">
+                {% csrf_token %}
+                <input type="email" placeholder="Enter Your Email" name="email" style="text-transform: none;" autocomplete="off">
                 <button type="submit" class="btn">subscribe</button>
             </form>
             <p>By subscribing you agree to with our privacy policy and provide consent to receive updates from our company.</p>

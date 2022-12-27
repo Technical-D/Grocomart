@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from app.models import Customer, Product
+from app.models import Customer, Product, Newsletter
 from django.contrib.auth.models import Group
 
 # Register your models here.
@@ -19,3 +19,4 @@ class CustomerAdmin(UserAdmin):
 admin.site.register(Customer, CustomerAdmin)
 admin.site.unregister(Group)
 admin.site.register(Product)
+admin.site.register(Newsletter)

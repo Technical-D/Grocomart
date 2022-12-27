@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponse
-from app.forms import SignupForm, AccountAuthenticationForm
-from app.models import Customer, Product
+from app.forms import SignupForm, AccountAuthenticationForm, NewsletterForm
+from app.models import Customer, Product, Newsletter
 import random
 # Create your views here.
 
@@ -110,3 +110,10 @@ def contact(request):
 def about(request):
 
     return render(request, 'app/about.html', {})
+
+def newsletter(request):
+    if request.POST:
+        form = NewsletterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'app/newsletter.html')
