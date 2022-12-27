@@ -311,23 +311,43 @@ a:active {
     display: block;
 }
 
-.contact form{
-    text-align: center;
-    padding:2rem;
+/* Contact page */
+.contact .box-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 3rem;
+    background-color: #f5f5f5;
+    padding: 2rem;
+    border-radius: .5rem;
     border:.1rem solid rgba(0,0,0,.3);
-    background-color: #F5F5F5;
-    border-radius: .8rem;
     box-shadow: var(--shadow);
 }
+.contact form{
+    text-align: center;
+    padding:1rem;
+    border-radius: .8rem;
 
+}
+.contact hr{
+    border-top: 1px solid black;
+    width: 60%;
+}
+.contact a{
+    color: var(--green);
+    text-transform: none;
+}
+.contact .box-container .info p, .contact .box-container .email-form p{
+    padding: 1rem;
+    font-size: 1.7rem;
+}
 .contact form .inputBox{
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
+    color: #f5f5f5;
 }
 .contact form .inputBox input{
-    flex: 1;
+
     border-radius: .8rem;
+    width: 100%;
 }
 
 .contact form .inputBox input, .contact form textarea{
@@ -336,7 +356,7 @@ a:active {
     text-transform: none;
     margin:1rem 0;
     border:.1rem solid rgba(0,0,0,.3);
-    width: 49%;
+    width: 100%;
     border-radius: .8rem;
 }
 
@@ -344,6 +364,15 @@ a:active {
     height: 20rem;
     resize: none;
     width: 100%;
+}
+.contact .box-container .email-form{
+    width: 50%;
+}
+.contact .box-container .info{
+    width: 50%;
+}
+.contact .box-container .email-form h1, .contact .box-container .info h1{
+    text-align: start;
 }
 
 .footer .box-container{
@@ -494,7 +523,7 @@ a:active {
 }
 .product_s .box-container .img-box img{
     width: 100%;
-    height: 450px;
+    height: auto;
 }
 .product_s .box-container .img-box{
     width: 420px;
@@ -701,6 +730,18 @@ a:active {
         border-left: none;
 
     }
+    .product_s .box-container .img-box img{
+        width: 80%;
+        height: auto;
+    }
+    .product_s .box-container .img-box{
+        width: 80%;
+        height: auto;
+    }
+    .product_s .box-container .info-box{
+        width: 100%;
+        height: auto;
+    }
 }
 
 @media(max-width:991px){
@@ -739,6 +780,7 @@ a:active {
     .cart .box-container .box-2 .row p span{
         margin: 0;
     }
+
 }
 @media(max-width:768px){
 
@@ -773,6 +815,12 @@ a:active {
     .home .content h3{
         font-size: 4rem;
     }
+    .contact .box-container{
+        flex-direction: column;
+    }
+    .contact .box-container .info ,.contact .box-container .email-form{
+        width: 100%;
+    }
 }  
 @media(max-width:450px){
 
@@ -804,5 +852,6 @@ a:active {
         bottom: 3rem ;
         right: 3rem;
     }
+    
 
 }

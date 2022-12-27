@@ -1,0 +1,43 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block content %}
+<section class="contact" style="margin-top: 83px;">
+    <div class="box-container">
+        <div class="info">
+            <h1 class="heading">
+                Contact <span>info</span>
+            </h1>
+            <hr>
+            <p>Phone: 2687 7808 </p>
+            <p>Email: <a href="">grocomart77@gmail.com</a></p>
+            <p>Hours of operation: 8am-6pm Mon-Sat </p>
+            <p>Grocomart .inc</p>
+            <p>450 powai</p> 
+            <p>Mumbai 400079.</p> 
+            </p>
+            <hr>
+            <p>Have any query, Feel free to email us at <a href="">grocomart77@gmail.com</a></p>
+            <p>or</p>
+            <p>Contact us through email form.</p>
+        </div>
+        <div class="email-form">
+            <h1 class="heading">Email <span>form</span></h1>
+            <hr>
+            <p>we want to hear from you. please fill out above form</p>
+            <form action="">
+
+                <div class="inputBox">
+                    <input type="text" placeholder="Name"><br>
+                    <input type="email" placeholder="Email"><br>
+                    <input type="text" placeholder="Subject">
+                </div>
+        
+                <textarea placeholder="Message" name="" id="" cols="30" rows="10"></textarea>
+        
+                <input type="submit" value="send message" class="btn">
+        
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock content %}

@@ -103,3 +103,6 @@ def cart_view(request):
 
     return render(request, 'app/cart.html', {})
 
+def contact(request):
+
+    return render(request,'app/contact.html', {})
