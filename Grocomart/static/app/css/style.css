@@ -484,16 +484,17 @@ a:active {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5rem;
+    gap: 3rem;
     flex-wrap: wrap;
     background-color: #fff;
     border:.1rem solid rgba(0,0,0,.3);
     border-radius: .5rem;
-
+    padding: 2rem;
+    margin-bottom: 7rem;
 }
 .product_s .box-container .img-box img{
     width: 100%;
-    margin: 0 auto;
+    height: 450px;
 }
 .product_s .box-container .img-box{
     width: 420px;
@@ -506,6 +507,7 @@ a:active {
     width: 420px;
     height: 450px;
     padding: 2.4rem;
+    border-left: 1px solid var(--dark);
 }
 .product_s .box-container .info-box h1{
     font-size: 3rem;
@@ -518,6 +520,7 @@ a:active {
     color:#333;
     padding:.5rem 0;
 }
+
 .product_s .box-container .info-box .price span{
     font-size: 1.5rem;
     color:#999;
@@ -561,7 +564,7 @@ a:active {
 }
 .product_s .box-container .info-box .desc{
     color: var(--dark);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 .product_s .box-container .info-box .discount span{
 
@@ -573,16 +576,7 @@ a:active {
     display: block;
     width: 70%;
 }
-/* .product_s .box-container hr{
-    border-width: 1px;
-  border-style: solid;
-  color: rgb(0, 146, 247);
-  display: inline-block;
-  height: 18px;
-  width: 100%;
-  border-radius: 30px;
-  vertical-align: middle;
-} */
+
 /* To the top button */
 .toTop{
     background-color: var(--green);
@@ -699,7 +693,14 @@ a:active {
     html{
         font-size: 55%;
     }
+    .product_s .box-container{
+        flex-direction: column;
+    }
+    .product_s .box-container .info-box{
+        border-top: 1px solid var(--dark);
+        border-left: none;
 
+    }
 }
 
 @media(max-width:991px){
@@ -803,4 +804,5 @@ a:active {
         bottom: 3rem ;
         right: 3rem;
     }
+
 }
