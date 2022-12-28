@@ -16,4 +16,9 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('newsletter/', views.newsletter, name='newsletter'),
 
+
+
+
+    path("password_reset/", views.password_reset_request, name="password_reset"),
+
 ]

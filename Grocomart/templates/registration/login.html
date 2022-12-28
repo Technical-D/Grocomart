@@ -44,7 +44,7 @@
 
           {% endif %}
           
-          <a href=""  class="fp">Forgot Password?</a>
+          <a href={% url 'password_reset' %}  class="fp">Forgot Password?</a>
           <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
           <span>or</span>
           <a href={% url 'signup' %} class="w-100 btn btn-lg btn-primary mb-3">Signup</a>
