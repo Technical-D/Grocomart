@@ -12,6 +12,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.contrib import messages
+from django.conf import settings
 # Create your views here.
 
 def index(request):
@@ -164,8 +165,9 @@ def password_reset_request(request):
                         'protocol': 'http',
                     }
                     email = render_to_string(email_template_name, c)
+                    admin_email = settings.EMAIL_HOST_USER
                     try:
-                        send_mail(subject, email, 'grocomart77@gmail.com' , [user.email], fail_silently=False)
+                        send_mail(subject, email, admin_email , [user.email], fail_silently=False)
                     except BadHeaderError:
                         return HttpResponse('Invalid header found.')
                     return redirect ("password_reset_done")
