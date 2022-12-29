@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from app.forms import SignupForm, AccountAuthenticationForm, NewsletterForm, QueriesForm
-from app.models import Customer, Product
+from app.models import Customer, Product, OrderItem, Order
 # Password reset import
 from django.core.mail import send_mail, BadHeaderError
 from django.contrib.auth.forms import PasswordResetForm
@@ -13,12 +13,20 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.contrib import messages
 from django.conf import settings
+import json
 # Create your views here.
 
-def index(request):
-    products = Product.objects.order_by('?')[:9]
+def cart(r):
+    if r.user.is_authenticated:
+        customer = r.user
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        return order
 
-    return render(request, 'app/index.html', {'products':products})
+
+def index(request):
+    products = Product.objects.all()[:9]
+    order = cart(request)
+    return render(request, 'app/index.html', {'products':products, 'order':order})
 
 def login_view(request):
     user = request.user
@@ -74,17 +82,19 @@ def profile(request):
         customer = Customer.objects.get(pk=user_id)
     else:
         return redirect('login')
-    return render(request, 'app/profile.html', {'customer':customer})
+    order = cart(request)
+    return render(request, 'app/profile.html', {'customer':customer, 'order':order})
 
 def product_view(request, id):
     product_id = id
     product = Product.objects.get(pk=product_id)
+    order = cart(request)
+    return render(request, 'app/product.html', {'product':product, 'order':order})
 
-    return render(request, 'app/product.html', {'product':product})
 def products(request):
-    products = Product.objects.order_by('?').all()
-
-    return render(request, 'app/products.html', {'products':products})
+    products = Product.objects.all()
+    order = cart(request)
+    return render(request, 'app/products.html', {'products':products, 'order':order})
 
 def category(request):
     vegetables = Product.objects.filter(category='vegetables').all()
@@ -96,8 +106,8 @@ def category(request):
     pulses = Product.objects.filter(category='pulses').all()
     biscuits = Product.objects.filter(category='biscuits').all()
 
-
-    context = {'vegetables':vegetables, 'fruits':fruits, 'dairy': dairy, 'oils':oils,'snacks':snacks,'grains':grains,'pulses':pulses,'biscuits':biscuits}
+    order = cart(request)
+    context = {'vegetables':vegetables, 'fruits':fruits, 'dairy': dairy, 'oils':oils,'snacks':snacks,'grains':grains,'pulses':pulses,'biscuits':biscuits, 'order':order}
 
     return render(request, 'app/category.html', context)
 
@@ -105,12 +115,48 @@ def category(request):
 def categories_view(request, name):
     category  = name
     p = Product.objects.filter(category=category).all()
+    order = cart(request)
 
-    return render(request, 'app/categories.html', {'products':p, 'category':category})
+    return render(request, 'app/categories.html', {'products':p, 'category':category, 'order':order})
 
 def cart_view(request):
 
-    return render(request, 'app/cart.html', {})
+    if request.user.is_authenticated:
+        customer = request.user
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all()
+        cartItem = order.get_cart_item
+    else:
+        return redirect('login')
+    context ={'items':items, 'order':order, 'cartItem':cartItem}
+    return render(request, 'app/cart.html', context)
+
+
+
+def updateItem(request):
+    data = json.loads(request.body)
+    productId = data['productId']
+    action = data['action']
+    print(productId, action)
+    customer = request.user
+    product = Product.objects.get(id=productId)
+    order, created = Order.objects.get_or_create(customer=customer, complete=False)
+
+    orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+
+    if action == 'add':
+        orderItem.quantity = (orderItem.quantity + 1)
+    elif action == 'remove':
+        orderItem.quantity = (orderItem.quantity -1)
+    
+    orderItem.save()
+    if orderItem.quantity <= 0:
+        orderItem.delete()
+
+    return JsonResponse('Item added!', safe=False)
+
+
+
 
 def contact(request):
     context ={}
@@ -127,11 +173,14 @@ def contact(request):
             return HttpResponse('Please Login to send query!!')
     else:
         form = QueriesForm()
-    return render(request,'app/contact.html', {'contact_form':form})
+
+    order = cart(request)
+    
+    return render(request,'app/contact.html', {'contact_form':form, 'order':order})
 
 def about(request):
-
-    return render(request, 'app/about.html', {})
+    order = cart(request)
+    return render(request, 'app/about.html', {'order':order})
 
 def newsletter(request):
     if request.POST:
