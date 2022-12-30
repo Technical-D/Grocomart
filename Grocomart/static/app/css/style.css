@@ -763,6 +763,20 @@ a:active {
 .checkout .box-container .box-2{
     width: 50%;
 }
+.checkout .box-container .box-2 .address p{
+    font-size: 1.7rem;
+}
+.checkout .box-container .box-2 .address {
+    padding: 2rem;
+    border: 0.1rem solid rgba(0,0,0,.3);
+    border-radius: .5rem;
+}
+.checkout .box-container .box-2 .address .heading{
+    font-size: 2.7rem;
+    margin: 1rem 0 2rem;
+    text-align: start;
+    padding: 0;
+}
 .checkout .box-container .box-1 .heading{
     font-size: 2.7rem;
     margin: 1rem 0 2rem;

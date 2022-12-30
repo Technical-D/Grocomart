@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponse, JsonResponse
 from app.forms import SignupForm, AccountAuthenticationForm, NewsletterForm, QueriesForm
-from app.models import Customer, Product, OrderItem, Order
+from app.models import Customer, Product, OrderItem, Order, ShippingAddress
 # Password reset import
 from django.core.mail import send_mail, BadHeaderError
 from django.contrib.auth.forms import PasswordResetForm
@@ -138,13 +138,27 @@ def checkout(request):
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
         cartItem = order.get_cart_item
+        address = ShippingAddress.objects.filter(customer=customer).values()
+        print(address)
+        
     else:
         return redirect('login')
 
-    context ={'items':items, 'order':order, 'cartItem':cartItem}
+    context ={'items':items, 'order':order, 'cartItem':cartItem, 'address':address}
 
     return render(request, 'app/checkout.html', context)
 
+def shipping_address(request):
+    customer = request.user
+    if request.POST:
+            add = request.POST['address']
+            land = request.POST['landmark']
+            state = request.POST['state']
+            city = request.POST['city']
+            zcode = request.POST['zipcode']
+            c = ShippingAddress.objects.create(customer=customer, address=add, landmark=land, state=state, city=city, zipcode=zcode)
+            c.save()
+            return redirect('checkout')
 
 def updateItem(request):
     data = json.loads(request.body)
