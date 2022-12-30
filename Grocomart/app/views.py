@@ -132,6 +132,19 @@ def cart_view(request):
     return render(request, 'app/cart.html', context)
 
 
+def checkout(request):
+    if request.user.is_authenticated:
+        customer = request.user
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all()
+        cartItem = order.get_cart_item
+    else:
+        return redirect('login')
+
+    context ={'items':items, 'order':order, 'cartItem':cartItem}
+
+    return render(request, 'app/checkout.html', context)
+
 
 def updateItem(request):
     data = json.loads(request.body)

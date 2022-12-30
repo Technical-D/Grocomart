@@ -8,7 +8,7 @@
             <div class="box-1">
                 <p><span>Items:</span> {{order.get_cart_item}}</p>
                 <p><span>total:</span> ₹{{order.get_cart_total|floatformat:2}}</p>
-                <a style="margin-top: 0;" class="btn">checkout</a>
+                <a href={% url 'checkout' %} style="margin-top: 0;" class="btn">checkout</a>
             </div>
             <div class="box-2">
                 <div class="row" style="font-weight: bold;">

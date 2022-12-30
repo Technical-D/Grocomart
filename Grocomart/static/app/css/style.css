@@ -743,6 +743,110 @@ a:active {
 .cart .box-container hr{
     border-top: 1px solid var(--dark);
 }
+
+
+/* Checkout */
+.checkout .box-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 3rem;
+}
+.checkout .box-container .box-1{
+    border: 0.1rem solid rgba(0,0,0,.3);
+    width: 50%;
+    padding: 2rem;
+    border-radius: .5rem;   
+    /* box-shadow: var(--shadow); */
+
+}
+.checkout .box-container .box-2{
+    width: 50%;
+}
+.checkout .box-container .box-1 .heading{
+    font-size: 2.7rem;
+    margin: 1rem 0 2rem;
+    text-align: start;
+    padding: 0;
+}
+.checkout .box-container .box-1 .btn{
+    font-size:1.5rem ;
+    margin: 1rem 0;
+    padding: 1rem;
+}
+.checkout .box-container .box-1 .items {
+    border-radius: .5rem;
+    border: 0.1rem solid rgba(0,0,0,.3);
+}
+.checkout .box-container .box-1 .items .row{
+    display: grid;
+    grid-template-columns:repeat(4, 22%);
+    gap: 2rem;
+    text-align: center;
+    /* background-color: #f5f5f5; */
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    border-radius: .5rem;
+}
+.checkout .box-container .box-1 .items .row p{
+    margin: auto 0;
+    font-size: 1.5rem;
+}
+.checkout .box-container .box-1 .items .row span{
+    font-size: 1.2rem;
+    color: gray;
+    font-weight: bold;
+    margin-right: .3rem;
+}
+.checkout .box-container .box-1 .items hr{
+    border-top: 1px solid var(--dark);
+}
+.checkout .box-container .box-1 .end{
+    margin: 2rem 0;
+    font-size: 1.7rem;
+}
+.checkout .box-container .box-1 .end span{
+    font-weight: bold;
+}
+.checkout .box-container .box-2 .shipping-form .heading{
+    font-size: 2.7rem;
+    text-align: start;
+}
+.checkout .box-container .box-2 .shipping-form{
+    border: 0.1rem solid rgba(0,0,0,.3);
+    width: 100%;
+    margin: 0;
+    padding: 2rem;
+    text-align: center;
+    border-radius: .5rem;
+    
+}
+.checkout .box-container .box-2 .shipping-form .inputBox{
+    font-size: 1.5rem;
+    background-color: #f5f5f5;
+    padding: 1rem ;
+    margin: .5rem 0;
+    border: 0.1rem solid rgba(0,0,0,.3);
+    border-radius: .8rem;
+    width: 100%;
+}
+.checkout .box-container .box-2 .shipping-form .btn{
+    margin: 1rem auto;
+}
+.checkout .box-container .box-2 .payment{
+    text-align: center;
+    margin: 2rem 0;
+    text-align: center;
+    border: 0.1rem solid rgba(0,0,0,.3);
+    padding: 2rem;
+    border-radius: .5rem;
+}
+.checkout .box-container .box-2 .payment .heading{
+    font-size: 2.7rem;
+}
+
+
+
 /* About us page */
 .about .box-container{
 
@@ -849,7 +953,20 @@ a:active {
     .product #search{
         width: 80%;
     }
-
+    .checkout .box-container{
+        flex-direction: column;
+    }
+    .checkout .box-container .box-1 , .checkout .box-container .box-2{
+        width: 100%;
+    }
+    .checkout .box-container .box-1 .items .row{
+        font-size: 35%;
+        padding-left: 1.5rem;
+    }
+    .checkout .box-container .box-1 img{
+        width: 75%;
+        height: 75%;
+    }
 }
 @media(max-width:768px){
 
