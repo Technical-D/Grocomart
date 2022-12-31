@@ -44,8 +44,9 @@
             </div>  
             {% endfor %}
             <div class="payment">
-                <h3 class="heading">Payment</h3>
-                <button class="btn">Payment</button>
+                <h3 class="heading">Payment Invoice</h3>
+                <p><span>Amount to Pay:</span> ₹{{order.get_cart_total}}</p>
+                <a href={% url 'process_payment' %} class="btn">Proceed to pay</a>
             </div>
             {% else %}
             <div class="shipping-form">

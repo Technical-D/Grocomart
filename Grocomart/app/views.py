@@ -80,10 +80,13 @@ def profile(request):
     if request.user.is_authenticated:
         user_id = request.user.id
         customer = Customer.objects.get(pk=user_id)
+        address = ShippingAddress.objects.filter(customer=customer).values()
+        order_detail = Order.objects.filter(customer=customer, complete=True)
+        print(order_detail)
     else:
         return redirect('login')
     order = cart(request)
-    return render(request, 'app/profile.html', {'customer':customer, 'order':order})
+    return render(request, 'app/profile.html', {'customer':customer, 'order':order, 'address':address, 'order_detail':order_detail})
 
 def product_view(request, id):
     product_id = id
@@ -139,7 +142,6 @@ def checkout(request):
         items = order.orderitem_set.all()
         cartItem = order.get_cart_item
         address = ShippingAddress.objects.filter(customer=customer).values()
-        print(address)
         
     else:
         return redirect('login')
@@ -147,6 +149,16 @@ def checkout(request):
     context ={'items':items, 'order':order, 'cartItem':cartItem, 'address':address}
 
     return render(request, 'app/checkout.html', context)
+
+def process_payment(request):
+
+    return render(request, 'payment/process.html', {})
+
+
+def payment_status(request):
+
+    return render(request, 'payment/payment_status.html', {})
+
 
 def shipping_address(request):
     customer = request.user
@@ -164,7 +176,6 @@ def updateItem(request):
     data = json.loads(request.body)
     productId = data['productId']
     action = data['action']
-    print(productId, action)
     customer = request.user
     product = Product.objects.get(id=productId)
     order, created = Order.objects.get_or_create(customer=customer, complete=False)

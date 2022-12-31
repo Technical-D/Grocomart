@@ -659,35 +659,72 @@ a:active {
 .toTop i:hover{
     color: var(--dark);
 }
+/* Profile */
 
-.profile{
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;     
-    justify-content: center;
-    margin-top: 82px;
-
-}
-.field{
-    margin: 2rem;
-}
-.field h1{
-    font-size: 3rem;
-    padding-bottom: 1rem;
-}
-.field p{
-    font-size: 1.6rem;
-    font-weight: bold;
-}
-.field input{
-    background-color: #f6f6f6;
-    height: 3rem;
-    margin-bottom: 2rem;
-    width: 20%;
-}
 .profile hr{
     border: 1px solid var(--green);
-    padding: 1px;
+    margin: 2rem auto;
+    width: 90%;
+}
+.profile .box-container .heading{
+    margin: 0;
+    padding: 1rem 0;
+    font-size: 3rem;
+}
+.profile .box-container .personal .p_info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.profile .box-container .personal .p_info  img{
+    width: 20rem;
+    height: 20rem;
+}
+.profile .box-container .personal .p_info div p{
+    font-size: 2rem;
+    text-align: center;
+}
+.profile .box-container .personal .p_info div p span{
+    font-weight: bold;
+}
+.profile .box-container .personal .p_info div .e{
+    text-transform: lowercase;
+}
+.profile .box-container .personal .address{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.profile .box-container .personal .address div{
+    text-align: start;
+    font-size: 1.8rem;
+}
+.profile .box-container .personal .address div span{
+    font-weight: bold;
+    font-size: 2.2rem;
+}
+.profile .box-container .second{
+    display: flex;
+    justify-content: center;
+    gap: 20%;
+}
+.profile .box-container .second .order .r{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin: 1rem 0;
+    font-size: 1.8rem;
+    padding: .5rem;
+}
+.profile .box-container .second .order .r p{
+    margin: auto;
+}
+.profile .box-container .second .order .r:first-child{
+    border: 1px solid var(--dark);
+}
+.profile .box-container .second hr{
+    display: none;
 }
 
 /* Cart css */
@@ -743,7 +780,13 @@ a:active {
 .cart .box-container hr{
     border-top: 1px solid var(--dark);
 }
-
+.cart .empty{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
 
 /* Checkout */
 .checkout .box-container{
@@ -848,13 +891,22 @@ a:active {
     margin: 1rem auto;
 }
 .checkout .box-container .box-2 .payment{
-    text-align: center;
+    text-align: start;
     margin: 2rem 0;
     text-align: center;
     border: 0.1rem solid rgba(0,0,0,.3);
     padding: 2rem;
     border-radius: .5rem;
 }
+.checkout .box-container .box-2 .payment p{
+    font-size: 1.7rem;
+    margin: 1rem 0;
+}
+.checkout .box-container .box-2 .payment p span{
+    font-weight: bold;
+
+}
+
 .checkout .box-container .box-2 .payment .heading{
     font-size: 2.7rem;
 }
@@ -937,6 +989,19 @@ a:active {
     section{
         padding:2rem;
     }
+
+}
+@media(max-width:850px){
+    .profile .box-container .second{
+        flex-direction: column;
+    }
+    .profile .box-container .second hr{
+        display: block;
+}
+.profile .box-container .second .order {
+    width: 85%;
+    margin: auto;
+}
 
 }
 @media(max-width:650px){

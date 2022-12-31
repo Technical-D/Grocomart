@@ -4,31 +4,71 @@
 {% block content %}
 
 <!-- Profile section -->
-<section class="profile">
-    <h1 class="heading">Account <span>Information</span> </h1>
+<section class="profile" style="margin-top: 90px;">
+    <h1 class="heading">Account <span>Details</span></h1>
+    <hr>
     <div class="box-container">
-        <hr>
-        <div class="field">
-            <h1>Personal Information</h1>
-            <p>First Name</p>
-            <input type="text" value="{{customer.first_name}}" readonly>
+        <div class="personal">
+            <h1 class="heading">Personal <span>Information</span></h1>
+            <div class="p_info">
+                <div><img src={% static 'images/man.png' %} alt=""></div>
+                <div>
+                    <p><span>{{customer.first_name}} {{customer.last_name}}</span></p>
+                    <p class="e"><span>Email: </span>{{customer.email}}</p>
+                    <p><span>Mobile: </span>{{customer.mobile}}</p>
+                </div>
+            </div>
+            <hr>
+        <div class="second">
+            <div class="address">
+                <h1 class="heading">Address <span>details</span></h1>
+                <div>
+                    <p><span>Primary Address</span></p>
+                    {% for i in address %}
+                    <p>{{i.address}}</p>
+                    <p>{{i.landmark}}</p>
+                    <p>{{i.state}}</p>
+                    <p>{{i.city}}</p>
+                    <p>{{i.zipcode}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+            <hr>
+            <div class="order">
+                <h1 class="heading">Order <span>Details</span></h1>
+                <div class="tb">
+                    <div class="r">
+                        <p>order id</p>
+                        <p>Trasaction id</p>
+                        <p>Status</p>
+                        <p>delivered</p>
+                    </div>
 
-            <p>Last Name</p>
-            <input type="text" value="{{customer.last_name}}" readonly>
-
-            <p>Email</p>
-            <input type="email" value="{{customer.email}}" readonly>
-            <p>Mobile No.</p>
-            <input type="text" value="{{customer.mobile}}" readonly>
+                    <div class="r">
+                        {% for i in order_detail %}
+                        <p>{{i.id}}</p>
+                        <p>{{i.transaction_id}}</p>
+                        <p>
+                            {% if i.complete %}
+                            complete
+                            {% else %}
+                            pending
+                            {% endif %}
+                        </p>
+                        <p>
+                            {% if i.delivery %}
+                            yes
+                            {% else %}
+                            not yet
+                            {% endif %}
+                        </p>
+                        {% endfor %}
+                        
+                    </div>
+                </div>
+            </div>
         </div>
         <hr>
-        <div class="field">
-            <h1>Address</h1>
-        </div>
-        <hr>
-        <div class="field">
-            <h1>Order History</h1>
-        </div>
     </div>
 </section>
 

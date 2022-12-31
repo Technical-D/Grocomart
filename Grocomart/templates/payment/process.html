@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocomart</title>
+    <link rel="stylesheet" href={% static 'app/css/style.css' %}>
+</head>
+<body>
+    <div class="c">
+        <h1 class="heading">Redirecting you to payment page...</h1>
+        <p>Please do not refresh your page....</p>
+        <img src={% static 'images/load.gif' %} alt="">
+    </div>
+    <form action="/payment_status/" method="get" name="payment">
+
+    </form>
+
+    <style>
+        .c {
+            text-align: center;
+            margin: 3rem auto;
+        }
+        .c .heading{
+            font-size: 3rem;
+        }
+        .c p{
+            font-size: 2rem;
+        }
+        .c img{
+            margin: 2rem 0;
+        }
+    </style>
+    <script>
+        setTimeout(() => {
+        document.payment.submit()
+        }, 5000);
+    </script>
+</body>
+</html>

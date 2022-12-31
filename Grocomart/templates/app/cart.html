@@ -3,8 +3,9 @@
 {% block content %}
   <section class="cart" style="margin-top: 83px; min-height: 100vh;">
         <div class="box-container">
-            <a href={% url 'index' %} style="margin-bottom: 2rem;" class="btn"><i class="fa-solid fa-arrow-left-long"></i> Continue Shopping</a>
 
+            {% if order.get_cart_total != 0 %}
+            <a href={% url 'index' %} style="margin-bottom: 2rem;" class="btn"><i class="fa-solid fa-arrow-left-long"></i> Continue Shopping</a>
             <div class="box-1">
                 <p><span>Items:</span> {{order.get_cart_item}}</p>
                 <p><span>total:</span> ₹{{order.get_cart_total|floatformat:2}}</p>
@@ -34,6 +35,16 @@
                 </div>
                 {% endfor %}
             </div>
+            {% else %}
+            <div class="empty">
+                <div>
+                    <img src={% static 'images/emptycart.png' %} alt="" width="400px" height="400px">
+                </div>
+            <h1 class="heading">Your cart is Empty</h1>
+            <a href="{% url 'products' %}" class="btn">Add products</a>
+            </div>
+            {% endif %}
         </div>
     </section>
 {% endblock content %}
+ 
