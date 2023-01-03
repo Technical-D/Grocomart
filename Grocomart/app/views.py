@@ -14,7 +14,14 @@ from django.utils.encoding import force_bytes
 from django.contrib import messages
 from django.conf import settings
 import json
+import stripe
+import datetime
 # Create your views here.
+
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
+
+
 
 def cart(r):
     if r.user.is_authenticated:
@@ -142,22 +149,35 @@ def checkout(request):
         items = order.orderitem_set.all()
         cartItem = order.get_cart_item
         address = ShippingAddress.objects.filter(customer=customer).values()
-        
+        amount = int(order.get_cart_total * 100)
+        key = settings.STRIPE_PUBLISH_KEY
+
     else:
         return redirect('login')
 
-    context ={'items':items, 'order':order, 'cartItem':cartItem, 'address':address}
+    context ={'items':items, 'order':order, 'cartItem':cartItem, 'address':address, 'amount':amount, 'key':key}
 
     return render(request, 'app/checkout.html', context)
 
 def process_payment(request):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            customer = request.user
+            order, created = Order.objects.get_or_create(customer=customer, complete=False)
+            amount = int(order.get_cart_total * 100)
 
-    return render(request, 'payment/process.html', {})
+            stripe.PaymentIntent.create(
+                amount=amount,
+                currency="inr",
+                payment_method_types=["card"],
+            )
 
+            order.transaction_id = datetime.datetime.now().timestamp()
+            order.complete = True
+            order.save()
 
-def payment_status(request):
+    return render(request, 'payment/payment_status.html', {'order':order})
 
-    return render(request, 'payment/payment_status.html', {})
 
 
 def shipping_address(request):

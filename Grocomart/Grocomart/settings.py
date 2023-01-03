@@ -150,3 +150,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_PORT = 587
 # EMAIL_HOST_USER = 'grocomart07@gmail.com'
 # EMAIL_HOST_PASSWORD = env('password')
+
+STRIPE_SECRET_KEY = 'sk_test_51MLrCWSG8MXfwis4cGu3NIrVlHfooZgMoWjhbldm1oxzwBISTsuHy1ooWP5NMfmH963CGM9zzdgNeydEb2tzZSBu00lgNoAUbq'
+STRIPE_PUBLISH_KEY = 'pk_test_51MLrCWSG8MXfwis4thMwzlEoR2IQHtVQR6ojUCAe1OaQEg6r3DMpDfR4r4btYVZ1NsZn1wA0LODrtQyOrxYo7t4O002lBRvydX'

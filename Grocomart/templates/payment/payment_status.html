@@ -10,8 +10,12 @@
 </head>
 <body>
     <div class="c">
+        <img src={% static 'images/check.gif' %} alt="">
         <h1 class="heading">Payment <span>Sucessful!!!</span></h1>
-        <p>Your payment to grocomart is sucessfull!!</p>
+        <p>your payment of <span>₹{{order.get_cart_total}}</span> for order id <span>{{order.id}}</span> is Sucessful!!</p>
+        
+
+        <a href={% url 'index' %} class="btn">Go to Home Page</a>
     </div>
     <style>
         .c {
@@ -23,6 +27,16 @@
         }
         .c p{
             font-size: 2rem;
+        }
+        .c p span{
+            font-weight: bold;
+        }
+        .c .btn {
+            margin-top: 5rem;
+        }
+        .c img{
+            width: 300px;
+            height: auto;
         }
     </style>
 </body>

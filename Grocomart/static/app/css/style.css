@@ -707,14 +707,14 @@ a:active {
 .profile .box-container .second{
     display: flex;
     justify-content: center;
-    gap: 20%;
+    gap: 5%;
 }
 .profile .box-container .second .order .r{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
+    gap: .5rem;
     margin: 1rem 0;
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     padding: .5rem;
 }
 .profile .box-container .second .order .r p{
@@ -999,7 +999,8 @@ a:active {
         display: block;
 }
 .profile .box-container .second .order {
-    width: 85%;
+    font-size: 30%;
+    width: 90%;
     margin: auto;
 }
 

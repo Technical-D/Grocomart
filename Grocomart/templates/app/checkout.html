@@ -46,7 +46,18 @@
             <div class="payment">
                 <h3 class="heading">Payment Invoice</h3>
                 <p><span>Amount to Pay:</span> ₹{{order.get_cart_total}}</p>
-                <a href={% url 'process_payment' %} class="btn">Proceed to pay</a>
+                <form action={% url 'process_payment' %} method="post">
+                    {% csrf_token %}
+                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button "
+                    data-key = "{{key}}"
+                    data-description="Pay To Grocomart"
+                    data-amount="{{amount}}"
+                    data-locale="auto"
+                    data-currency="inr"
+                    >
+                </script>
+                </form>
+                <p>powered by <span>STRIPE</span></p>
             </div>
             {% else %}
             <div class="shipping-form">
