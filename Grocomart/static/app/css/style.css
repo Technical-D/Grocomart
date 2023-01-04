@@ -707,15 +707,18 @@ a:active {
 .profile .box-container .second{
     display: flex;
     justify-content: center;
-    gap: 5%;
+    flex-direction: column;
+    align-items: center;
+    gap: 10%;
 }
 .profile .box-container .second .order .r{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: .5rem;
+    gap: 1rem;
     margin: 1rem 0;
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     padding: .5rem;
+
 }
 .profile .box-container .second .order .r p{
     margin: auto;
@@ -723,9 +726,7 @@ a:active {
 .profile .box-container .second .order .r:first-child{
     border: 1px solid var(--dark);
 }
-.profile .box-container .second hr{
-    display: none;
-}
+
 
 /* Cart css */
 .cart .box-container .box-1{
@@ -992,16 +993,9 @@ a:active {
 
 }
 @media(max-width:850px){
-    .profile .box-container .second{
-        flex-direction: column;
-    }
-    .profile .box-container .second hr{
-        display: block;
-}
-.profile .box-container .second .order {
-    font-size: 30%;
-    width: 90%;
-    margin: auto;
+    .profile .box-container .second .order {
+        font-size: 10%;
+        width: 90%;
 }
 
 }
