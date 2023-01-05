@@ -10,7 +10,7 @@
         {% for product in products %}
         <div class="box">
             <span class="discount">-{{product.get_discount|floatformat:0}}%</span>
-            <a href={% url 'products' %}{{product.id}}><img src={{product.imageUrl}} alt=""></a>
+            <a href={% url 'products' %}{{product.id}}><img src={{product.imageUrl}} alt="" title="{{product.name}}"></a>
             <h3>{{product.name}}</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
