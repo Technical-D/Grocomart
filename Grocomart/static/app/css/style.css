@@ -948,7 +948,105 @@ a:active {
     text-transform: none;
 }
 
+/* invoice */
 
+.invoice .box-container table tr td {
+padding: 0;
+}
+
+.invoice .box-container table tr td:last-child {
+text-align: right;
+}
+
+.invoice .box-container .bold {
+font-weight: bold;
+}
+
+.invoice .box-container .right {
+text-align: right;
+}
+
+
+.invoice .box-container .total {
+font-weight: bold;
+}
+
+.invoice .box-container .invoice-info-container td {
+padding: 4px 0;
+}
+
+.invoice .box-container .client-name {
+font-size: 1.5em;
+}
+
+.invoice .box-container .line-items-container {
+margin: 2rem 0;
+}
+
+.invoice .box-container .line-items-container th {
+text-align: left;
+color: #999;
+border-bottom: 2px solid #ddd;
+padding: 10px 0 15px 0;
+font-size: 0.75em;
+text-transform: uppercase;
+}
+
+.invoice .box-container .line-items-container th:last-child {
+text-align: right;
+}
+
+.invoice .box-container .line-items-container td {
+padding: 15px 0;
+}
+
+.invoice .box-container .line-items-container tbody tr:first-child td {
+padding-top: 25px;
+}
+
+.invoice .box-container .line-items-container.has-bottom-border tbody tr:last-child td {
+padding-bottom: 25px;
+border-bottom: 2px solid #ddd;
+}
+
+.line-items-container th.heading-quantity {
+width: 50px;
+}
+.invoice .box-container .line-items-container th.heading-price {
+text-align: right;
+width: 100px;
+}
+.invoice .box-container .line-items-container th.heading-subtotal {
+width: 100px;
+}
+
+.invoice .box-container .payment-info {
+width: 38%;
+}
+.invoice{
+    width: 50%;
+    height: 50%;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 0.1rem solid rgba(0,0,0,.3);
+}
+.invoice .box-container{
+    font-size: 1.7rem;
+    display: flex;
+    flex-direction: column;
+}
+.invoice .box-container table{
+    border: 1px solid var(--dark);
+    padding: 3rem;
+}
+.invoice .box-container .footer{
+    margin-top: 2rem;
+    text-align: center;
+}
+.invoice .box-container .footer a{
+    text-transform: none;
+    color: var(--green);
+}
 /* media queries  */
 
 @media(max-width:1200px){
@@ -990,7 +1088,9 @@ a:active {
     section{
         padding:2rem;
     }
-
+    .invoice{
+        width: 100%;
+    }
 }
 @media(max-width:850px){
     .profile .box-container .second .order {
