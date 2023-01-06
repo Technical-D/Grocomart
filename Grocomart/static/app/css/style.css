@@ -714,11 +714,14 @@ a:active {
 .profile .box-container .second .order .r{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    gap: 2rem;
     margin: 1rem 0;
-    font-size: 1.6rem;
-    padding: .5rem;
+    font-size: 1.7rem;
+    padding: .8rem;
 
+}
+.profile .box-container .second .order .r a{
+    color: var(--green);
 }
 .profile .box-container .second .order .r p{
     margin: auto;

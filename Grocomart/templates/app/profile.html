@@ -39,15 +39,14 @@
                 <div class="tb">
                     <div class="r">
                         <p>order Id</p>
-                        <p>Trasaction Id</p>
                         <p>Status</p>
                         <p>delivered</p>
+                        <p>invoice</p>
                     </div>
 
                     <div class="r">
                         {% for i in order_detail %}
                         <p>{{i.id}}</p>
-                        <p>{{i.transaction_id}}</p>
                         <p>
                             {% if i.complete %}
                             complete
@@ -62,6 +61,7 @@
                             not yet
                             {% endif %}
                         </p>
+                        <p><a href={% url 'invoice' i.id %} >download</a></p>
                         {% endfor %}
                         
                     </div>
@@ -71,4 +71,5 @@
         <hr>
     </div>
 </section>
+
 {% endblock content %}

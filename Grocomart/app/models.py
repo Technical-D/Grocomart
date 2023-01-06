@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-
+from django.utils.timezone import now
 # Create your models here.
 
 
@@ -117,6 +117,8 @@ class Order(models.Model):
     complete = models.BooleanField(default=False)
     delivered = models.BooleanField(default=False)
     transaction_id = models.CharField(max_length=100, null=True)
+    date_completed  = models.DateField(default=now)
+
 
     def __str__(self):
         return str(self.id)
