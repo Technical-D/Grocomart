@@ -44,7 +44,30 @@ body::-webkit-scrollbar-thumb{
 	box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: var(--green);
 }
-
+[data-title]:hover:after {
+    opacity: 1;
+    transition: all 0.1s ease 0.5s;
+    visibility: visible;
+}
+[data-title]:after {
+    content: attr(data-title);
+    background-color: var(--green);
+    color: #fff;
+    font-size: 1rem;
+    position: absolute;
+    padding: .5rem;
+    bottom: -2.6rem;
+    left: 100%;
+    white-space: nowrap;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    border: 1px solid var(--dark);
+    z-index: 99999;
+    visibility: hidden;
+}
+[data-title] {
+    position: relative;
+}
 section{
   padding:2rem 9%;
   margin-bottom: 1.2rem;
@@ -124,12 +147,33 @@ a:active {
     border-radius: .5rem;
     color:var(--dark);
     font-weight: bold;
-    transition: transform .5s;
 }
 
-.header .navbar a:hover{
-    font-size: 2.2rem;
-    color: var(--green);
+nav a,
+nav a:after,
+nav a:before {
+  transition: all .5s;
+}
+nav.navbar a{
+  position: relative;
+}
+nav.navbar a:hover{
+    color: gray;
+}
+nav.navbar a:after {
+  position: absolute;
+  bottom: -2.2rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: var(--green);
+  height: 3px;
+}
+nav.navbar a:hover:after {
+  width: 100%;
 }
 
 .header .icons a{
@@ -523,6 +567,7 @@ a:active {
     line-height: 1.8;
     font-size: 1.6rem;
     padding-top: 4rem;
+    text-align: justify;
 }
 
 .review .box-container .box::before{

@@ -12,7 +12,7 @@
         {% for product in vegetables %}
         <div class="box">
             <span class="discount">-{{product.get_discount|floatformat:0}}%</span>
-            <a href={% url 'products' %}{{product.id}}><img src={{product.imageUrl}} alt="" title="{{product.name}}"></a>
+            <a href={% url 'products' %}{{product.id}} data-title="{{product.name}}"><img src={{product.imageUrl}} alt="" ></a>
             <h3>{{product.name}}</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
@@ -43,7 +43,7 @@
         {% for product in fruits %}
         <div class="box">
             <span class="discount">-{{product.get_discount|floatformat:0}}%</span>
-            <a href="{% url 'products' %}{{product.id}}"><img src={{product.imageUrl}} alt="" title="{{product.name}}"></a>
+            <a href="{% url 'products' %}{{product.id}}" data-title="{{product.name}}"><img src={{product.imageUrl}} alt="" ></a>
             <h3>{{product.name}}</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
@@ -74,7 +74,7 @@
         {% for product in dairy %}
         <div class="box">
             <span class="discount">-{{product.get_discount|floatformat:0}}%</span>
-            <a href="{% url 'products' %}{{product.id}}"><img src={{product.imageUrl}} alt="" title="{{product.name}}"></a>
+            <a href="{% url 'products' %}{{product.id}}" data-title="{{product.name}}"><img src={{product.imageUrl}} alt="" ></a>
             <h3>{{product.name}}</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
@@ -105,7 +105,7 @@
         {% for product in grains %}
         <div class="box">
             <span class="discount">-{{product.get_discount|floatformat:0}}%</span>
-            <a href="{% url 'products' %}{{product.id}}"><img src={{product.imageUrl}} alt="" title="{{product.name}}"></a>
+            <a href="{% url 'products' %}{{product.id}}" data-title="{{product.name}}"><img src={{product.imageUrl}} alt="" ></a>
             <h3>{{product.name}}</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
@@ -136,7 +136,7 @@
         {% for product in pulses %}
         <div class="box">
             <span class="discount">-{{product.get_discount|floatformat:0}}%</span>
-            <a href="{% url 'products' %}{{product.id}}"><img src={{product.imageUrl}} alt="" title="{{product.name}}"></a>
+            <a href="{% url 'products' %}{{product.id}}" data-title="{{product.name}}"><img src={{product.imageUrl}} alt="" ></a>
             <h3>{{product.name}}</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
@@ -167,7 +167,7 @@
         {% for product in snacks %}
         <div class="box">
             <span class="discount">-{{product.get_discount|floatformat:0}}%</span>
-            <a href="{% url 'products' %}{{product.id}}"><img src={{product.imageUrl}} alt="" title="{{product.name}}"></a>
+            <a href="{% url 'products' %}{{product.id}}" data-title="{{product.name}}"><img src={{product.imageUrl}} alt="" ></a>
             <h3>{{product.name}}</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
@@ -198,7 +198,7 @@
         {% for product in oils %}
         <div class="box">
             <span class="discount">-{{product.get_discount|floatformat:0}}%</span>
-            <a href="{% url 'products' %}{{product.id}}"><img src={{product.imageUrl}} alt="" title="{{product.name}}"></a>
+            <a href="{% url 'products' %}{{product.id}}" data-title="{{product.name}}"><img src={{product.imageUrl}} alt="" ></a>
             <h3>{{product.name}}</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
@@ -229,7 +229,7 @@
         {% for product in biscuits %}
         <div class="box">
             <span class="discount">-{{product.get_discount|floatformat:0}}%</span>
-            <a href="{% url 'products' %}{{product.id}}"><img src={{product.imageUrl}} alt="" title="{{product.name}}"></a>
+            <a href="{% url 'products' %}{{product.id}}" data-title="{{product.name}}"><img src={{product.imageUrl}} alt="" ></a>
             <h3>{{product.name}}</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>

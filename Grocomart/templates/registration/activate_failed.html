@@ -1,0 +1,21 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block content %}
+<section class="f">
+    <h1 class="heading"><span>Oops!</span> Verification failed!</h1>
+    <p>Your Verification has been failed!!</p>
+</section>
+<style>
+    .f{
+        margin-top: 83px;
+        text-align: center;
+        height: 80vh;
+    }
+    .f p{
+        font-size: 1.7rem;
+    }
+    .f span{
+        color: red;
+    }
+</style>
+{% endblock content %}

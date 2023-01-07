@@ -3,16 +3,18 @@ from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponse, JsonResponse
 from app.forms import SignupForm, AccountAuthenticationForm, NewsletterForm, QueriesForm
 from app.models import Customer, Product, OrderItem, Order, ShippingAddress
-# Password reset import
 from django.core.mail import send_mail, BadHeaderError
 from django.contrib.auth.forms import PasswordResetForm
 from django.template.loader import render_to_string
 from django.db.models.query_utils import Q
 from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
-from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_str
 from django.contrib import messages
 from django.conf import settings
+from django.contrib.sites.shortcuts import get_current_site
+from app.utils import generate_token
 import json
 import stripe
 import datetime
@@ -59,6 +61,24 @@ def logout_view(request):
 	logout(request)
 	return redirect("index")
 
+
+def send_activation_email(user, request):
+    current_site = get_current_site(request)
+    email_subject = 'Activate your account'
+    email_body = render_to_string('registration/activate.txt', {
+        'user': user,
+        'domain': current_site,
+        'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+        'token': generate_token.make_token(user)
+    })
+
+    admin_email = settings.EMAIL_HOST_USER
+    try:
+        send_mail(email_subject, email_body, admin_email , [user.email], fail_silently=False)
+    except BadHeaderError:
+        return HttpResponse('Invalid header found.')
+
+
 def signup_view(request):
     user = request.user
 
@@ -71,10 +91,9 @@ def signup_view(request):
         if form.is_valid():
             form.save()
             email = form.cleaned_data.get('email').lower()
-            raw_password = form.cleaned_data.get('password1')
-            customer = authenticate(email=email, password=raw_password)
-            login(request, customer)
-            return redirect('index')
+            u = Customer.objects.get(email=email)
+            send_activation_email(u, request)
+            return render(request, 'registration/activation_email_sent.html', {})
         else:
             context['signup_form'] = form
 
@@ -297,3 +316,23 @@ def password_reset_request(request):
 
     password_reset_form = PasswordResetForm()
     return render(request=request, template_name="password/password_reset.html", context={"password_reset_form":password_reset_form})
+
+
+
+def activate_user(request, uidb64, token):
+
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+
+        user = Customer.objects.get(pk=uid)
+
+    except Exception as e:
+        user = None
+
+    if user and generate_token.check_token(user, token):
+        user.is_active = True
+        user.save()
+
+        return render(request, 'registration/verified.html', {})
+
+    return render(request, 'registration/activate_failed.html', {"user": user})

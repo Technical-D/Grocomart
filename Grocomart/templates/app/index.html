@@ -30,7 +30,7 @@
     <div class="box">
         <h3>dairy</h3>
         <p>upto 44% off</p>
-        <a href="{% url 'category' %}dairy"><img src={% static 'images/dairy.png' %} alt=""></a>
+        <a href="{% url 'category' %}dairy"><img src={% static 'images/dairy.jpg' %} alt=""></a>
         <a href="{% url 'category' %}dairy" class="btn">shop now</a>
     </div>
     
@@ -91,7 +91,7 @@
         {% for product in products %}
         <div class="box">
             <span class="discount">-{{product.get_discount|floatformat:0}}%</span>
-            <a href={% url 'products' %}{{product.id}} title="{{product.name}}"><img src={{product.imageUrl}} alt=""></a>
+            <a href={% url 'products' %}{{product.id}} data-title="{{product.name}}"><img src={{product.imageUrl}} alt=""></a>
             <h3>{{product.name}}</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
@@ -128,9 +128,11 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
+                <i class="fas fa-star"></i>
             </div>
-            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam sapiente nihil aperiam? Repellat sequi nisi aliquid perspiciatis libero nobis rem numquam nesciunt alias sapiente minus voluptatem, reiciendis consequuntur optio dolorem!</p>
+            <p class="text">Looking at previous reviews I was scared to order itself. I use regularly amazon and bigbasket. I wanted give a try grocomart small quantities. But to my surprise veggies and fruits were very fresh. Tender coconut was looking like just plucked from tree. Prices are too comparatively low even for small quantities.
+
+                .. From now onwards I will shift to grocomart for sure</p>
         </div>
 
         <div class="box">
@@ -143,7 +145,7 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
             </div>
-            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam sapiente nihil aperiam? Repellat sequi nisi aliquid perspiciatis libero nobis rem numquam nesciunt alias sapiente minus voluptatem, reiciendis consequuntur optio dolorem!</p>
+            <p class="text">I have purchase onion , tomatoes , oats and brinjal from Jio mart . I have seen very very big discount in the rate of many products in grocomart application. The delivery service is also good. I bought the products yesterday. I hope the products are reached from kodungallur market. The quality of the products is also excellent. </p>
         </div>
 
         <div class="box">
@@ -154,9 +156,9 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
+                <i class="fa-regular fa-star"></i>
             </div>
-            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam sapiente nihil aperiam? Repellat sequi nisi aliquid perspiciatis libero nobis rem numquam nesciunt alias sapiente minus voluptatem, reiciendis consequuntur optio dolorem!</p>
+            <p class="text">Product was very beautiful design for selling and design for making are carried on by different people in different departments, it is the job of . If your competitor comes out with a very beautiful product.</p>
         </div>
 
     </div>

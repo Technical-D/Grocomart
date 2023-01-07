@@ -53,13 +53,13 @@
         {% if request.user.is_authenticated %}
             <div class="icons">
                 {% if order.get_cart_item != 0 %}
-                <a href={% url 'cart' %} class="fas fa-shopping-cart"><sup style="font-size: 1.7rem;"><sup>{{order.get_cart_item}}</sup></sup></a>
+                <a href={% url 'cart' %} data-title="Cart" class="fas fa-shopping-cart"><sup style="font-size: 1.7rem;"><sup>{{order.get_cart_item}}</sup></sup></a>
                 {% else %}
-                <a href={% url 'cart' %} class="fas fa-shopping-cart"></a>
+                <a href={% url 'cart' %} data-title="Cart" class="fas fa-shopping-cart"></a>
                 {% endif %}
                 
-                <a href={% url 'profile' %} class="fas fa-user-circle"></a>
-                <a href={% url 'logout' %} class="fa-solid fa-right-from-bracket"></a>
+                <a href={% url 'profile' %} data-title="Profile" class="fas fa-user-circle"></a>
+                <a href={% url 'logout' %} data-title="Logout" class="fa-solid fa-right-from-bracket"></a>
             </div>
         {% else %}
             <div>
