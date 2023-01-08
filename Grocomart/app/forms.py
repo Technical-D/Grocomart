@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
 
-from app.models import Customer, Newsletter, Queries, ShippingAddress
+from app.models import Customer, Newsletter, Queries, ProductReview
 
 class SignupForm(UserCreationForm):
     email = forms.EmailField(max_length=254, help_text='Required. Add a valid Email Address.')
@@ -59,3 +59,7 @@ class QueriesForm(forms.ModelForm):
         fields = ('name', 'email', 'subject', 'message',)
 
 
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = ProductReview
+        fields = ['subject', 'review', 'rating']

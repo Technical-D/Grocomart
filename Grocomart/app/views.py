@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponse, JsonResponse
-from app.forms import SignupForm, AccountAuthenticationForm, NewsletterForm, QueriesForm
-from app.models import Customer, Product, OrderItem, Order, ShippingAddress
+from app.forms import SignupForm, AccountAuthenticationForm, NewsletterForm, QueriesForm, ReviewForm
+from app.models import Customer, Product, OrderItem, Order, ShippingAddress, ProductReview
 from django.core.mail import send_mail, BadHeaderError
 from django.contrib.auth.forms import PasswordResetForm
 from django.template.loader import render_to_string
@@ -117,13 +117,16 @@ def profile(request):
 def product_view(request, id):
     product_id = id
     product = Product.objects.get(pk=product_id)
+
+    review = ProductReview.objects.filter(product__id=id, status=True)
+
     order = cart(request)
-    return render(request, 'app/product.html', {'product':product, 'order':order})
+    return render(request, 'app/product.html', {'product':product, 'order':order, 'reviews':review})
 
 def products(request):
     products = Product.objects.all()
     order = cart(request)
-    return render(request, 'app/products.html', {'products':products, 'order':order})
+    return render(request, 'app/products.html', {'products':products, 'order':order, })
 
 def category(request):
     vegetables = Product.objects.filter(category='vegetables').all()
@@ -336,3 +339,27 @@ def activate_user(request, uidb64, token):
         return render(request, 'registration/verified.html', {})
 
     return render(request, 'registration/activate_failed.html', {"user": user})
+
+
+
+def submit_review(request, p_id):
+    url = request.META.get('HTTP_REFERER')
+    if request.method == 'POST':
+        try:
+            reviews = ProductReview.objects.get(customer__id=request.user.id, product__id=p_id)
+            form = ReviewForm(request.POST, instance=reviews)
+            form.save()
+            messages.success(request, 'Thank you! Your review has been updated.')
+            return redirect(url)
+        except ProductReview.DoesNotExist:
+            form = ReviewForm(request.POST)
+            if form.is_valid():
+                data = ProductReview()
+                data.subject = form.cleaned_data['subject']
+                data.rating = form.cleaned_data['rating']
+                data.review = form.cleaned_data['review']
+                data.product_id = p_id
+                data.customer_id = request.user.id
+                data.save()
+                messages.success(request, 'Thank you! Your review has been submitted.')
+                return redirect(url)

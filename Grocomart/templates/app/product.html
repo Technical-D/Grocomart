@@ -9,7 +9,7 @@
         </div>
         <div class="info-box">
             <h1 >{{product.name}}</h1>
-            <p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet saepe necessitatibus dignissimos omnis dolores molestiae ullam accusantium consequatur, officia voluptatem.</p>
+            <p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
             <div class="price">
                  ₹ {{product.d_price|floatformat:2}} <i style="font-size: 1.5rem;">/{{product.unit}}</i>
                  <br>
@@ -20,6 +20,16 @@
             <p class="stock">in stock</p>
             <br>
             <p class="groco">sold by <span>Grocomart</span></p>
+            
+            <div class="stars">
+                <p>Product rating:</p>
+                <i class="fa fa-star{% if product.averageReview < 0.5 %}-o{% elif product.averageReview >= 0.5 and product.averageReview < 1 %}-half-o {% endif %}" aria-hidden="true"></i>
+                <i class="fa fa-star{% if product.averageReview < 1.5 %}-o{% elif product.averageReview >= 1.5 and product.averageReview < 2 %}-half-o {% endif %}" aria-hidden="true"></i>
+                <i class="fa fa-star{% if product.averageReview < 2.5 %}-o{% elif product.averageReview >= 2.5 and product.averageReview < 3 %}-half-o {% endif %}" aria-hidden="true"></i>
+                <i class="fa fa-star{% if product.averageReview < 3.5 %}-o{% elif product.averageReview >= 3.5 and product.averageReview < 4 %}-half-o {% endif %}" aria-hidden="true"></i>
+                <i class="fa fa-star{% if product.averageReview < 4.5 %}-o{% elif product.averageReview >= 4.5 and product.averageReview < 5 %}-half-o {% endif %}" aria-hidden="true"></i>
+                <span>({{product.countReview}})</span>
+            </div>
             <div class="quantity">
                 <span>quantity : </span>
                 <input type="number" min="1" max="1000" value="1" readonly>
@@ -29,5 +39,80 @@
         </div>
     </div>
 </section>
-  
+<section class="product_rv">
+    <div class="box_container">
+        <h1 class="heading">Product <span>Description</span></h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis magni est quaerat incidunt corporis facere doloremque quod temporibus, fugit voluptates, repudiandae veniam? Nostrum nisi itaque doloremque, est reprehenderit praesentium ratione?</p>
+
+        <hr>
+        <div class="reviews">
+            <h1 class="heading">Product <span>Reviews</span> </h1>
+            {% for review in reviews %}
+            <div class="review">
+                <div class="profile">
+                    <img src={% static 'images/man.png' %} alt="">
+                    <p>{{review.customer.first_name}} {{review.customer.last_name}}</p>
+                </div>
+                <div class="text">
+                    <div>
+                        <p><span>{{review.subject}}</span></p>
+                    </div>
+                    <div class="stars">
+                        <i class="fa fa-star{% if review.rating == 0.5 %}-half-o{% elif review.rating < 1 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if review.rating == 1.5 %}-half-o{% elif review.rating < 2 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if review.rating == 2.5 %}-half-o{% elif review.rating < 3 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if review.rating == 3.5 %}-half-o{% elif review.rating < 4 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if review.rating == 4.5 %}-half-o{% elif review.rating < 5 %}-o {% endif %}" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <p class="d">{{review.updated_at}}</p>
+                    </div>
+                    <div>
+                        <p>{{review.review}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+        <hr>
+        {% if request.user.is_authenticated %}
+            <div class="review_form">
+            
+                <form action={% url 'review' product.id %} method="post">
+                <h1 class="heading" style="text-align: center;">Write a<span> review</span></h1>
+                    {% csrf_token %}
+                    <div>
+                        <!-- Rating stars -->
+                        <label>How do you rate this product?</label>
+                        <br>
+                        <div class="rate">
+                            <input type="radio" name="rating" id="rating10" value="5" required /><label for="rating10" title="5"></label>
+                            <input type="radio" name="rating" id="rating9" value="4.5" required /><label for="rating9" title="4.5" class="half"></label>
+                            <input type="radio" name="rating" id="rating8" value="4" required /><label for="rating8" title="4"></label>
+                            <input type="radio" name="rating" id="rating7" value="3.5" required /><label for="rating7" title="3.5" class="half"></label>
+                            <input type="radio" name="rating" id="rating6" value="3" required /><label for="rating6" title="3"></label>
+                            <input type="radio" name="rating" id="rating5" value="2.5" required /><label for="rating5" title="2.5" class="half"></label>
+                            <input type="radio" name="rating" id="rating4" value="2" required /><label for="rating4" title="2"></label>
+                            <input type="radio" name="rating" id="rating3" value="1.5" required /><label for="rating3" title="1.5" class="half"></label>
+                            <input type="radio" name="rating" id="rating2" value="1" required /><label for="rating2" title="1"></label>
+                            <input type="radio" name="rating" id="rating1" value="0.5" required /><label for="rating1" title="0.5" class="half"></label>
+                        </div>
+                        <div>
+                        <input type="text" name="subject" placeholder="Subject" class="input">
+                        <textarea name="review" id="" cols="30" rows="8" class="input" placeholder="Write your review"></textarea>
+                        </div>
+                        <input type="submit" class="btn" value="submit review">
+                </form>
+            </div>
+            {% else %}
+            <div style="text-align: center; margin-top: 7rem;">
+                <p>You must be logged in to post a review.</p><br> <a class="btn" href="{% url 'login' %}">Login now</a>
+            </div>
+            
+            {% endif %}
+
+        
+    </div>
+</section>
 {% endblock content %}
