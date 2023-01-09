@@ -90,7 +90,6 @@ body::-webkit-scrollbar-thumb{
     animation: 1s ease-out 0s 1 slideInFromRight;
 }
 
-
 section{
   padding:2rem 9%;
   margin-bottom: 1.2rem;
@@ -100,7 +99,27 @@ input {
 }
 a:active {
     color: var(--green);
-  }
+}
+.messages{
+    width: 100%;
+    position: fixed;
+    top: 100px;
+    padding-left: 43%;
+    font-size: 2rem;
+    color: var(--green);
+    display: inline;
+    list-style: none;
+    font-weight: bold;
+}
+.err{
+    color: red;
+}
+.sucess{
+    color: var(--green);
+}
+.center{
+    text-align: center !important;
+}
 .logo{
     color:var(--dark);
     font-weight: bolder;
@@ -152,7 +171,7 @@ a:active {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 99;
 }
 
 .header.active{
@@ -326,6 +345,7 @@ nav.navbar a:hover:after {
     color:var(--green);
     padding:.7rem 1rem;
     font-size: 2rem;
+    z-index: 1;
 }
 
 
@@ -418,6 +438,7 @@ nav.navbar a:hover:after {
     border-radius: .5rem;
     border:.1rem solid rgba(0,0,0,.3);
     box-shadow: var(--shadow);
+    margin: 1rem 0;
 }
 .contact form{
     text-align: center;
@@ -617,7 +638,8 @@ nav.navbar a:hover:after {
     border:.1rem solid rgba(0,0,0,.3);
     border-radius: .5rem;
     padding: 2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem ;
+    margin-top: 1rem;
 }
 .product_s .box-container .img-box img{
     width: 100%;
@@ -1165,77 +1187,77 @@ color: gold;
 /* invoice */
 
 .invoice .box-container table tr td {
-padding: 0;
+    padding: 0;
 }
 
 .invoice .box-container table tr td:last-child {
-text-align: right;
+    text-align: right;
 }
 
 .invoice .box-container .bold {
-font-weight: bold;
+    font-weight: bold;
 }
 
 .invoice .box-container .right {
-text-align: right;
+    text-align: right;
 }
 
 
 .invoice .box-container .total {
-font-weight: bold;
+    font-weight: bold;
 }
 
 .invoice .box-container .invoice-info-container td {
-padding: 4px 0;
+    padding: 4px 0;
 }
 
 .invoice .box-container .client-name {
-font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 .invoice .box-container .line-items-container {
-margin: 2rem 0;
+    margin: 2rem 0;
 }
 
 .invoice .box-container .line-items-container th {
-text-align: left;
-color: #999;
-border-bottom: 2px solid #ddd;
-padding: 10px 0 15px 0;
-font-size: 0.75em;
-text-transform: uppercase;
+    text-align: left;
+    color: #999;
+    border-bottom: 2px solid #ddd;
+    padding: 10px 0 15px 0;
+    font-size: 0.75em;
+    text-transform: uppercase;
 }
 
 .invoice .box-container .line-items-container th:last-child {
-text-align: right;
+    text-align: right;
 }
 
 .invoice .box-container .line-items-container td {
-padding: 15px 0;
+    padding: 15px 0;
 }
 
 .invoice .box-container .line-items-container tbody tr:first-child td {
-padding-top: 25px;
+    padding-top: 25px;
 }
 
 .invoice .box-container .line-items-container.has-bottom-border tbody tr:last-child td {
-padding-bottom: 25px;
-border-bottom: 2px solid #ddd;
+    padding-bottom: 25px;
+    border-bottom: 2px solid #ddd;
 }
 
 .line-items-container th.heading-quantity {
-width: 50px;
+    width: 50px;
 }
 .invoice .box-container .line-items-container th.heading-price {
-text-align: right;
-width: 100px;
+    text-align: right;
+    width: 100px;
 }
 .invoice .box-container .line-items-container th.heading-subtotal {
-width: 100px;
+    width: 100px;
 }
 
 .invoice .box-container .payment-info {
-width: 38%;
+    width: 38%;
 }
 .invoice{
     width: 50%;
@@ -1261,6 +1283,9 @@ width: 38%;
     text-transform: none;
     color: var(--green);
 }
+
+
+
 /* media queries  */
 
 @media(max-width:1200px){

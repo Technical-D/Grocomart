@@ -40,7 +40,7 @@
                     <div class="r">
                         <p>order Id</p>
                         <p>Status</p>
-                        <p>delivered</p>
+                        <p>delivery status</p>
                         <p>invoice</p>
                     </div>
 
@@ -49,21 +49,20 @@
                         <p>{{i.id}}</p>
                         <p>
                             {% if i.complete %}
-                            complete
+                            completed
                             {% else %}
                             pending
                             {% endif %}
                         </p>
                         <p>
                             {% if i.delivered %}
-                            yes
+                            delivered
                             {% else %}
-                            not yet
+                            shipped
                             {% endif %}
                         </p>
                         <p><a href={% url 'invoice' i.id %} >download</a></p>
                         {% endfor %}
-                        
                     </div>
                 </div>
             </div>

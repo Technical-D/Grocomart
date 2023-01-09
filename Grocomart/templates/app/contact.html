@@ -1,6 +1,13 @@
 {% extends "app/base.html" %}
 {% load static %}
 {% block content %}
+{% if messages %}
+<ul class="messages sucess" style="top: 90px; padding-left: 22%;">
+{% for message in messages %}
+<li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+{% endfor %}
+</ul>
+{% endif %}
 <section class="contact" style="margin-top: 83px;">
     <div class="box-container">
         <div class="info">

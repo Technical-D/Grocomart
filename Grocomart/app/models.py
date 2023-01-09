@@ -62,6 +62,7 @@ class Customer(AbstractBaseUser):
     def __str__(self):
         return self.email
     
+
     
     # Checking for permission
     def has_perm(self, perm, obj=None):
@@ -69,6 +70,7 @@ class Customer(AbstractBaseUser):
     
     def has_module_perms(self, app_label):
         return True
+    
 
 CATEGORY = (
     ('Dairy', 'Dairy'),
@@ -126,6 +128,7 @@ class Product(models.Model):
         return count
 
 
+
 class ProductReview(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
@@ -176,6 +179,8 @@ class OrderItem(models.Model):
     def get_total(self):
         total = self.product.d_price * self.quantity
         return total
+
+    
 
 class ShippingAddress(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)

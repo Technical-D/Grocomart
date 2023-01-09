@@ -51,6 +51,7 @@ def login_view(request):
 
             if user:
                 login(request, user)
+                messages.success(request, 'Logged in Sucessfully!!')
                 return redirect("index")
     else:
         form = AccountAuthenticationForm()
@@ -58,8 +59,9 @@ def login_view(request):
     return render(request, 'registration/login.html', {'login_form':form})
 
 def logout_view(request):
-	logout(request)
-	return redirect("index")
+    logout(request)
+    messages.success(request, ' Logged out Sucessfully!!')
+    return redirect("index")
 
 
 def send_activation_email(user, request):
@@ -108,7 +110,6 @@ def profile(request):
         customer = Customer.objects.get(pk=user_id)
         address = ShippingAddress.objects.filter(customer=customer).values()
         order_detail = Order.objects.filter(customer=customer, complete=True)
-        print(order_detail)
     else:
         return redirect('login')
     order = cart(request)
@@ -120,8 +121,22 @@ def product_view(request, id):
 
     review = ProductReview.objects.filter(product__id=id, status=True)
 
+    purchased =[]
+    if request.user.is_authenticated:
+
+        purchased = purchasedItem(request.user, id)
+
     order = cart(request)
-    return render(request, 'app/product.html', {'product':product, 'order':order, 'reviews':review})
+    return render(request, 'app/product.html', {'product':product, 'order':order, 'reviews':review, 'purchased':purchased})
+
+def purchasedItem(customer, id):
+        order = Order.objects.filter(customer=customer, complete=True, delivered=True)
+        items=[]
+        for i in range(len(order)):
+            a = order[i].orderitem_set.filter(product__id=id).values()
+            for j in range(len(a)):
+                items.append(a[j]['product_id'])
+        return items
 
 def products(request):
     products = Product.objects.all()
@@ -252,6 +267,7 @@ def updateItem(request):
 
 
 def contact(request):
+    url = request.META.get('HTTP_REFERER')
     context ={}
     if request.POST:
         if request.user.is_authenticated:
@@ -259,7 +275,10 @@ def contact(request):
             form = QueriesForm(request.POST)
             if form.is_valid():
                 form.save()
-                return render(request, 'app/sent.html')
+
+                messages.success(request, 'we have recieved your query. We will try our best to solve your query. Thank you!!')
+                return redirect(url)
+                # return render(request, 'app/sent.html')
             else:
                 context['contact_form'] =form
         else:
