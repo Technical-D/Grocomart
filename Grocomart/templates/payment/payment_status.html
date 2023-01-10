@@ -17,103 +17,8 @@
         <p>your payment of <span> ₹{{order.get_cart_total}}</span> for order id <span>{{order.id}}</span> is Sucessful!!</p>
         <a href="{% url 'index' %}" class="btn f">Go to Homepage</a><br>
         <p><span>Your invoice</span></p>
-        <a onclick="downloadpdf()" class="btn">click here to download</a>
+        <a href={% url 'invoice' order.id %} class="btn">click here to view invoice</a>
     </div>
-    <section class="invoice" id="invoice">
-        <div class="box-container">
-        <h1 class="heading">Invoice</h1>
-          <table class="invoice-info-container">
-            
-            <tr>
-              <td rowspan="2" class="client-name">
-                {{customer.first_name}} {{customer.last_name}}
-              </td>
-              <td class="bold">
-                Shipping Address
-              </td>
-            </tr>
-            <tr>
-              <td>
-                {% for i in address %}
-                    {{i.address}}
-                {% endfor %}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Order Date: <strong>{{order.date_completed}}</strong>
-              </td>
-              <td>
-                {% for i in address %}
-                {{i.landmark}}, {{i.zipcode}}
-                {% endfor %}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Order Id: <strong>{{order.id}}</strong>
-              </td>
-              <td style="text-transform: lowercase;">
-                {{customer.email}}
-              </td>
-            </tr>
-          </table>
-          
-          
-          <table class="line-items-container">
-            <thead>
-              <tr>
-                
-                <th class="heading-quantity">Qty</th>
-                <th class="heading-description">Description</th>
-                <th class="heading-price">Price</th>
-                <th class="heading-subtotal">Subtotal</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for item in items %}
-              <tr>
-                <td>{{item.quantity}}</td>
-                <td>{{item.product.name}}</td>
-                <td class="right">₹{{item.product.d_price|floatformat:2}}</td>
-                <td class="bold">₹{{item.get_total|floatformat:2}}</td>
-              </tr>
-              {% endfor %}
-            
-            </tbody>
-          </table>
-          
-          
-          <table class="line-items-container has-bottom-border">
-            <thead>
-              <tr>
-                <th>Payment Status</th>
-                <th>Transcation Id</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="payment-info">
-                  <div>Complete</div>
-                </td>
-                <td class="large">{{order.transaction_id}}</td>
-                <td class="large total">₹{{order.get_cart_total|floatformat:2}}</td>
-              </tr>
-            </tbody>
-          </table>
-          
-          <div class="footer">
-            <div>
-                <span>Sold by</span>
-            <a  class="logo"><i class="fas fa-shopping-basket"></i>Grocomart</a>
-            </div>
-            
-            <br>
-            <p>For any query contact us at: <a style="text-transform: lowercase;">groomart07@gmail.com</a></p>
-          </div>
-        </div>
-    </section>
     <style>
         .c {
             text-align: center;
@@ -139,23 +44,5 @@
             padding: 1rem 2rem;
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.2.3/jspdf.plugin.autotable.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script>
-    async function downloadpdf() {
-    var doc = new jsPDF('l', 'pt');
-    await html2canvas(document.getElementById("invoice"), {
-        //allowTaint: true,
-        //useCORS: true,
-        width: 800,
-        height:1200,
-    }).then((canvas) => {
-        doc.addImage(canvas.toDataURL("image/png"), "PNG", 5, 5, 750, 650);
-    });
-
-    doc.save("invoice.pdf");
-    }
-    </script>
 </body>
 </html>

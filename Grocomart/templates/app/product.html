@@ -3,13 +3,6 @@
 {% block content %}
 
 
-{% if messages %}
-<ul class="messages sucess" style="top: 90px; padding-left: 35%;">
-{% for message in messages %}
-<li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-{% endfor %}
-</ul>
-{% endif %}
 <section class="product_s" style="margin-top: 83px;">
     <div class="box-container">
         <div class="img-box">
@@ -116,7 +109,7 @@
                 </div>
                 {% else %}
                 <div class="center" style=" margin-top: 7rem;">
-                    <h1 class="heading">Write a <span>Review</span></h1>
+                    <h1 class="heading center">Write a <span>Review</span></h1>
                     <p>Purchased product to write review.</p><br> <a class="btn" href="#">Buy now</a>
                 </div>
             {% endif %}

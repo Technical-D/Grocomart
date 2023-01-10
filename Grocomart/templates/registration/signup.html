@@ -16,6 +16,22 @@
     <link rel="stylesheet" href={% static 'registration/signup/style.css' %}>
 </head>
 <body>
+  {% if messages %}
+  <div class="messages" id="messages">
+  <ul class="msg">
+  {% for message in messages %}
+  <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+  {% endfor %}
+  </ul>
+  <span><i class="fa-solid fa-xmark" id="cross" onclick="rm()"></i></span>
+  </div>
+  {% endif %}
+  <script>
+    const messages = document.getElementById('messages')
+    function rm(){
+        messages.style.display = 'none';
+    }
+  </script>
     <section class="form-signup w-100 m-auto">
         <form method="post">
         {% csrf_token %}

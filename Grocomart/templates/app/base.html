@@ -69,7 +69,23 @@
     </div>
 </header>
 <br>
-
+{% if messages %}
+<div class="messages" id="messages">
+    <ul class="msg">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+    </ul>
+    <span><i class="fa-solid fa-xmark" id="cross" onclick="rm()"></i></span>
+</div>
+{% endif %}
+<script>
+    const messages = document.getElementById('messages')
+    function rm(){
+        messages.style.display = 'none';
+    }
+    // document.onscroll = rm()
+</script>
 <!-- Contents of different pages -->
     {% block content %}
       

@@ -43,6 +43,41 @@ form a:hover{
 input {
     caret-color: var(--green);
 }
+
+
+body{
+    position: relative;
+}
+.messages{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+    padding: .5rem;
+    border: 1px solid #fff;
+    background-color:#dfd ;
+    position: absolute;
+    left: 0; 
+    right: 0;
+    top: 10px; 
+    margin-left: auto; 
+    margin-right: auto;
+    width: fit-content;
+    z-index: 2;
+}
+
+
+.msg{
+    font-weight: bold;
+    color: var(--green);
+    list-style: none;
+    width: 90%;
+}
+.messages span{
+    color: gray;
+    cursor: pointer;
+}
+
 .logo{
     color:var(--dark);
     font-weight: bolder;

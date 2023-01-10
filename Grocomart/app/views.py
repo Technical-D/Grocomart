@@ -95,7 +95,9 @@ def signup_view(request):
             email = form.cleaned_data.get('email').lower()
             u = Customer.objects.get(email=email)
             send_activation_email(u, request)
-            return render(request, 'registration/activation_email_sent.html', {})
+            url = request.META.get('HTTP_REFERER')
+            messages.success(request, 'Please verify you email by clicking on link we have sent on your email!!')
+            return redirect(url)
         else:
             context['signup_form'] = form
 
@@ -278,11 +280,11 @@ def contact(request):
 
                 messages.success(request, 'we have recieved your query. We will try our best to solve your query. Thank you!!')
                 return redirect(url)
-                # return render(request, 'app/sent.html')
             else:
                 context['contact_form'] =form
         else:
-            return HttpResponse('Please Login to send query!!')
+            messages.error(request, 'Please login to send query!!')
+            form = QueriesForm()
     else:
         form = QueriesForm()
 
@@ -295,12 +297,16 @@ def about(request):
     return render(request, 'app/about.html', {'order':order})
 
 def newsletter(request):
+    url = request.META.get('HTTP_REFERER')
     if request.POST:
         form = NewsletterForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'app/newsletter.html')
-
+            messages.success(request, 'You have sucessfully subscribed for Newsletter.')
+            return redirect(url)
+        else:
+            messages.error(request, 'Something went wrong!')
+            return redirect(url)
 
 
 
@@ -330,8 +336,11 @@ def password_reset_request(request):
                     try:
                         send_mail(subject, email, admin_email , [user.email], fail_silently=False)
                     except BadHeaderError:
-                        return HttpResponse('Invalid header found.')
-                    return redirect ("password_reset_done")
+                        messages.error(request, 'Something went wrong!!')
+
+                    url = request.META.get('HTTP_REFERER')
+                    messages.success(request,"We've emailed you instructions for setting your password, if an account exists with the email you entered. You should receive them shortly.If you don't receive an email, please make sure you've entered the address you registered with, and check your spam folder.")
+                    return redirect (url)
             
             messages.error(request, 'Email is not registered!')
             return redirect('password_reset')
@@ -355,7 +364,8 @@ def activate_user(request, uidb64, token):
         user.is_active = True
         user.save()
 
-        return render(request, 'registration/verified.html', {})
+        messages.success(request, 'Your email is now Verified!! Now you can login into your account.')
+        return redirect('login')
 
     return render(request, 'registration/activate_failed.html', {"user": user})
 
