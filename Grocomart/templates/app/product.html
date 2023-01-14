@@ -43,11 +43,12 @@
 <section class="product_rv">
     <div class="box_container">
         <h1 class="heading">Product <span>Description</span></h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis magni est quaerat incidunt corporis facere doloremque quod temporibus, fugit voluptates, repudiandae veniam? Nostrum nisi itaque doloremque, est reprehenderit praesentium ratione?</p>
+        <p>{{product.description}}</p>
 
         <hr>
         <div class="reviews">
             <h1 class="heading">Product <span>Reviews</span> </h1>
+            {% if reviews %}
             {% for review in reviews %}
             <div class="review">
                 <div class="profile">
@@ -74,6 +75,10 @@
                 </div>
             </div>
             {% endfor %}
+            {% else %}
+            <p>No reviews available.</p>
+            {% endif %}
+            
             
         </div>
         <hr>

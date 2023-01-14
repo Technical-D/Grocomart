@@ -43,7 +43,7 @@
             <label for="floatingInput">Email</label>
           </div>
           <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required><i class="fa-solid fa-eye" id="pswdtoggle"></i>
             <label for="floatingPassword">Password</label>
           </div>
           {% for field in login_form %}
@@ -67,5 +67,22 @@
           <p class=" mb-3 text-muted">&copy;2023 Grocomart</p>
         </form>
       </section>
+      <script>
+        const pswd_field = document.getElementById('pswdtoggle')
+        pswd_field.onclick = function() {
+          if (pswd_field.className == "fa-solid fa-eye") {
+            pswd_field.className = "fa-solid fa-eye-slash";
+          } else {
+            pswd_field.className = "fa-solid fa-eye";
+          }
+          var temp = document.getElementById("floatingPassword");
+            if (temp.type === "password") {
+                temp.type = "text";
+            }
+            else {
+                temp.type = "password";
+            }
+        }
+      </script>
 </body>
 </html>

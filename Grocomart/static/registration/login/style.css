@@ -108,7 +108,7 @@ body{
 }
 .heading{
     text-align: center;
-    color:var(--black);
+    color:var(--dark);
     text-transform: uppercase;
     padding:1rem;
     font-size: 1.6rem;
@@ -137,7 +137,7 @@ form a .fp{
     border-bottom-left-radius: 0;
 }
 
-.form-login input[type="password"] {
+.form-login input[type="password"], .form-login input[type="text"] {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -145,6 +145,16 @@ form a .fp{
 ul {
     list-style: none;
     text-align: center;
+}
+#pswdtoggle {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    z-index: 200;
+    top: 22px;
+    right: 10px;
+    cursor: pointer;
+    color: var(--dark);
 }
 @media(max-width: 600px){
     

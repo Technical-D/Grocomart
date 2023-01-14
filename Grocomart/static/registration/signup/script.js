@@ -59,3 +59,18 @@ function submit_form(){
     form.submit();
     form.reset();
 }
+const pswd_toggle = document.getElementById('pswdtoggle')
+pswd_toggle.onclick = function() {
+  if (pswd_toggle.className == "fa-solid fa-eye") {
+    pswd_toggle.className = "fa-solid fa-eye-slash";
+  } else {
+    pswd_toggle.className = "fa-solid fa-eye";
+  }
+  var temp = document.getElementById("floatingPassword");
+    if (temp.type === "password") {
+        temp.type = "text";
+    }
+    else {
+        temp.type = "password";
+    }
+}

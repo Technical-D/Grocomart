@@ -166,6 +166,16 @@ body{
     color: red;
     text-align: start;
 }
+#pswdtoggle {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    z-index: 200;
+    top: 22px;
+    right: 10px;
+    cursor: pointer;
+    color: var(--dark);
+}
 @media(max-width: 600px){
     
     .form-signup{
