@@ -235,6 +235,7 @@ def invoice(request, id):
 def shipping_address(request):
     customer = request.user
     if request.POST:
+
             add = request.POST['address']
             land = request.POST['landmark']
             state = request.POST['state']
@@ -242,6 +243,7 @@ def shipping_address(request):
             zcode = request.POST['zipcode']
             c = ShippingAddress.objects.create(customer=customer, address=add, landmark=land, state=state, city=city, zipcode=zcode)
             c.save()
+            messages.success(request, 'Address added sucessfully!!')
             return redirect('checkout')
 
 def updateItem(request):
