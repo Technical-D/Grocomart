@@ -84,7 +84,7 @@ CATEGORY = (
 )
 
 class Product(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=50)
     o_price = models.FloatField(verbose_name='Original Price')
     d_price = models.FloatField(verbose_name='Discounted Price')
     category = models.CharField(choices=CATEGORY, max_length=20)

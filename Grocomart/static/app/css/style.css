@@ -674,7 +674,7 @@ nav.navbar a:hover:after {
 }
 .product_s .box-container .info-box{
     width: 420px;
-    height: 450px;
+    height: auto;
     padding: 2.4rem;
     border-left: 1px solid var(--dark);
 }
