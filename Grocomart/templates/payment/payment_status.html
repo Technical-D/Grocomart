@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grocomart</title>
+    <link rel="icon" type="image/x-icon" href={% static 'images/favicon.ico' %}>
     <link rel="stylesheet" href={% static 'app/css/style.css' %}>
     <script src="https://kit.fontawesome.com/f6f8f493f3.js" crossorigin="anonymous"></script>
 
@@ -19,6 +20,7 @@
         <p><span>Your invoice</span></p>
         <a href={% url 'invoice' order.id %} class="btn">click here to view invoice</a>
     </div>
+    <audio src="{% static 'payment_sound/sound.mp3' %}" id="my_audio" ></audio> 
     <style>
         .c {
             text-align: center;
@@ -44,5 +46,10 @@
             padding: 1rem 2rem;
         }
     </style>
+    <script>
+
+        document.getElementById("my_audio").play();
+    
+    </script>
 </body>
 </html>

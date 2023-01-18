@@ -41,6 +41,7 @@
                 <p>{{i.state}}</p>
                 <p>{{i.city}}</p>
                 <p>{{i.zipcode}}</p>
+                <a href={% url 'change_address' %} class="btn" style="padding: 1rem;">change address</a>
             </div>  
             {% endfor %}
             <div class="payment">

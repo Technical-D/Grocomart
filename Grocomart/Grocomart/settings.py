@@ -40,6 +40,8 @@ AUTH_USER_MODEL = 'app.Customer'
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_interface',
+    'colorfield',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,6 +51,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'app',
 ]
+X_FRAME_OPTIONS='SAMEORIGIN'
 CRISPY_TEMPLATE_PACK = 'uni_form'
 
 MIDDLEWARE = [

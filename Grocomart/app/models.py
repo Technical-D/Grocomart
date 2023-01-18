@@ -180,6 +180,8 @@ class OrderItem(models.Model):
         total = self.product.d_price * self.quantity
         return total
 
+    def __str__(self):
+        return str(self.product)
     
 
 class ShippingAddress(models.Model):
@@ -192,10 +194,7 @@ class ShippingAddress(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.address
-
-
-
+        return str(self.customer)
 
 
 

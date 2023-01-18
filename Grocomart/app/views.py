@@ -188,6 +188,7 @@ def checkout(request):
         items = order.orderitem_set.all()
         cartItem = order.get_cart_item
         address = ShippingAddress.objects.filter(customer=customer).values()
+        print(address)
         amount = int(order.get_cart_total * 100)
         key = settings.STRIPE_PUBLISH_KEY
 
@@ -234,8 +235,8 @@ def invoice(request, id):
 
 def shipping_address(request):
     customer = request.user
-    if request.POST:
-
+    if customer.is_authenticated:
+        if request.POST:
             add = request.POST['address']
             land = request.POST['landmark']
             state = request.POST['state']
@@ -245,6 +246,19 @@ def shipping_address(request):
             c.save()
             messages.success(request, 'Address added sucessfully!!')
             return redirect('checkout')
+
+def change_addrs(request):
+    customer = request.user
+    url = request.META.get('HTTP_REFERER')
+    if customer.is_authenticated:
+        instance=ShippingAddress.objects.get(customer=customer)
+        instance.delete()
+        messages.success(request, 'Please add new address!!')
+        return redirect(url)
+    else:
+        messages.error(request, 'Please login to proceed!')
+        return redirect('login')
+
 
 def updateItem(request):
     data = json.loads(request.body)
