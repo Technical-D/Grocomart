@@ -200,6 +200,7 @@ def checkout(request):
     return render(request, 'app/checkout.html', context)
 
 def process_payment(request):
+    current_site = get_current_site(request)
     if request.user.is_authenticated:
         if request.method == 'POST':
             customer = request.user
@@ -218,6 +219,20 @@ def process_payment(request):
             order.complete = True
             order.date_completed = datetime.date.today()
             order.save()
+
+            email_subject = 'Order confirmed!'
+            email_body = render_to_string('payment/confirm.txt', {
+                'user': customer,
+                'domain': current_site,
+                'order':order
+            })
+
+            admin_email = settings.EMAIL_HOST_USER
+            try:
+                send_mail(email_subject, email_body, admin_email , [customer.email], fail_silently=False)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            
 
     return render(request, 'payment/payment_status.html', {'order':order, 'customer':customer,'address':address, 'items':items })
 

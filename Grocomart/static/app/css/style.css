@@ -247,6 +247,12 @@ nav.navbar a:hover:after {
 .header .icons a:hover{
     color:var(--green);
 }
+
+.navbar a:active{
+    color: var(--green) !important;
+}
+
+
 #menu-bar{
     font-size: 3rem;
     border-radius: .5rem;
@@ -1480,9 +1486,7 @@ color: gold;
         bottom: 3rem ;
         right: 3rem;
     }
-    .product_rv .box_container .review .text{
-        font-size: 50%;
-    }
+
     .product_rv .box_container .review .profile img{
         width: 70px;
         height: 70px;

@@ -6,6 +6,7 @@
   --shadow: 0 .5rem 1rem rgba(0,0,0,.1);
 }
 
+
 *{
     font-family: 'Nunito', sans-serif;
     margin:0; padding:0;
@@ -48,6 +49,7 @@ input {
 body{
     position: relative;
 }
+
 .messages{
     display: flex;
     justify-content: center;
@@ -162,5 +164,22 @@ ul {
         padding: 5px;
         margin: 46px 10px;
     
+    }
+    
+
+}
+@media(min-width: 600px){
+    @keyframes slideInFromRight {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+    }
+    
+    
+    .form-login{
+        animation: 1s ease-out 0s 1 slideInFromRight;
     }
 }

@@ -184,3 +184,18 @@ body{
     
     }
 }
+@media(min-width: 600px){
+    @keyframes slideInFromRight {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+    }
+    
+    
+    .form-signup{
+        animation: 1s ease-out 0s 1 slideInFromRight;
+    }
+}

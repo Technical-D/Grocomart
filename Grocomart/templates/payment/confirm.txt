@@ -1,0 +1,19 @@
+{% autoescape off %}
+
+
+Hi {{user.first_name}} {{user.last_name}}
+
+Your payment of ₹{{order.get_cart_total}} for order_id {{order.id}} has been completed.
+
+You can download your invoice from profile section or clik on link below for invoice:
+http://{{domain}}{% url 'invoice' order.id %}
+
+
+Your order will be delivered soon.
+
+Sincerely,
+The Grocomart Team
+
+
+
+{% endautoescape %}
