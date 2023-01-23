@@ -639,6 +639,7 @@ nav.navbar a:hover:after {
     font-size: 1.6rem;
     padding-top: 4rem;
     text-align: justify;
+    text-transform: none;
 }
 
 .review .box-container .box::before{
@@ -776,6 +777,7 @@ nav.navbar a:hover:after {
 }
 .product_rv .box_container p{
     font-size: 1.7rem;
+    text-transform: none;
 }
 .product_rv .box_container .reviews{
     margin: 3rem 0;
@@ -787,7 +789,7 @@ nav.navbar a:hover:after {
     margin-top: 2rem ;
     border: 1px solid var(--dark);
     border-radius: .8rem;
-    padding: 2rem 1rem;
+    padding: 2rem;
     box-shadow: var(--shadow);
 }
 .product_rv .box_container .review .profile{
@@ -803,6 +805,7 @@ nav.navbar a:hover:after {
 .product_rv .box_container .review .profile p{
     font-weight: bold;
     font-size: 1.8rem;
+    text-transform: capitalize;
 }
 .product_rv .box_container .review .text p span{
     font-weight: bold;
@@ -831,6 +834,7 @@ nav.navbar a:hover:after {
     margin: 1rem 0;
     border: 1px solid var(--dark);
     border-radius: .5rem;
+    text-transform: none;
 }
 
 .rate > input{
@@ -965,6 +969,9 @@ color: gold;
 }
 .profile .box-container .second .order .r a{
     color: var(--green);
+}
+.profile .box-container .second .order .r a:hover{
+    text-decoration: underline;
 }
 .profile .box-container .second .order .r p{
     margin: auto;
