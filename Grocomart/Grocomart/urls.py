@@ -29,6 +29,3 @@ urlpatterns = [
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
-admin.site.site_header  =  "Grocomart Admin Page"  
-admin.site.site_title  =  "Grocomart Admin site"
-admin.site.index_title  =  "Grocomart Admin"

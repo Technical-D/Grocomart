@@ -27,7 +27,7 @@
         </tr>
         <tr>
           <td>
-            Order Date: <strong>{{order.date_completed}}</strong>
+            Order Date: <strong>{{order_i.date_completed}}</strong>
           </td>
           <td>
             {% for i in address %}
@@ -37,7 +37,7 @@
         </tr>
         <tr>
           <td>
-            Order Id: <strong>{{order.id}}</strong>
+            Order Id: <strong>{{order_i.id}}</strong>
           </td>
           <td style="text-transform: lowercase;">
             {{customer.email}}
@@ -83,8 +83,8 @@
             <td class="payment-info">
               <div>Complete</div>
             </td>
-            <td class="large">{{order.transaction_id}}</td>
-            <td class="large total">₹{{order.get_cart_total|floatformat:2}}</td>
+            <td class="large">{{order_i.transaction_id}}</td>
+            <td class="large total">₹{{order_i.get_cart_total|floatformat:2}}</td>
           </tr>
         </tbody>
       </table>

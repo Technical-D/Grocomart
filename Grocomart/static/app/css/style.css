@@ -854,7 +854,7 @@ float: right;
 /* Showing the stars */
 .rate > label:before{
 display: inline-block;
-font-size: 2.5rem;
+font-size: 3.5rem;
 font-family: FontAwesome;
 content: "\f005";
 margin:0;

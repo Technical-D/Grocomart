@@ -237,15 +237,16 @@ def process_payment(request):
     return render(request, 'payment/payment_status.html', {'order':order, 'customer':customer,'address':address, 'items':items })
 
 def invoice(request, id):
+    order = cart(request)
     order_id = id
     if request.user.is_authenticated:
         customer = request.user
-        order= Order.objects.get(pk=order_id)
-        items = order.orderitem_set.all()
+        order_i= Order.objects.get(pk=order_id)
+        items = order_i.orderitem_set.all()
         address = ShippingAddress.objects.filter(customer=customer).values()
 
 
-    return render(request, 'payment/invoice.html', {'order':order, 'address':address, 'customer':customer, 'items':items})
+    return render(request, 'payment/invoice.html', {'order_i':order_i, 'address':address, 'customer':customer, 'items':items, 'order':order})
 
 
 def shipping_address(request):
@@ -344,6 +345,7 @@ def newsletter(request):
 
 
 def password_reset_request(request):
+    current_site = get_current_site(request)
     if request.method == 'POST':
         password_reset_form = PasswordResetForm(request.POST)
         if password_reset_form.is_valid():
@@ -355,7 +357,7 @@ def password_reset_request(request):
                     email_template_name = 'password/password_reset_email.txt'
                     c = {
                         "email":user.email,
-                        'domain':'127.0.0.1:8000',
+                        'domain':current_site,
                         'site_name': 'Grocomart',
                         "uid": urlsafe_base64_encode(force_bytes(user.pk)),
                         "user": user,
