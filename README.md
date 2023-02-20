@@ -28,6 +28,12 @@ To get started with Grocomart, follow these steps:
 * Create a .env file in the root directory and add your Stripe API key.
 * Run the server using python manage.py runserver.
 
+## Using the Live Demo
+***
+* Visit https://grocomart.live
+* Sign up for an account or log in with Google.
+* Start creating your wishlists!
+
 ## Usage
 To use Grocomart, go to the URL where the server is running in your browser. From there, you can browse products, add them to your cart, and checkout using Stripe.
 
