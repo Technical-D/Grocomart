@@ -3,6 +3,12 @@
 Grocomart is an online grocery store that allows users to order groceries from the comfort of their homes. This project was built using Django and Python.
 You can visit my website through below link: http://34.100.197.255:8000/
 
+<br>
+
+
+![Screenshot_20230131_110339](https://user-images.githubusercontent.com/101353705/220039986-9e294421-5ee1-4eda-ba17-0962c21f0c2e.png)
+
+<br>
 
 ## Features
 User registration and login
