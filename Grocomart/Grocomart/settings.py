@@ -28,7 +28,7 @@ MEDIA_DIR = Path.joinpath(BASE_DIR, 'media')
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-l21ew1oz^2&b7svf@o$r1v)p_3!ill3=a@_sbe*_#ve+w^v$-p'
+SECRET_KEY = env('secret_key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -94,7 +94,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'grocomart',
         'USER': 'root',
-        'PASSWORD': 'dheeraj1902',
+        'PASSWORD': env('db_password'),
         'HOST':'localhost',
         'PORT':'3306',
     }
