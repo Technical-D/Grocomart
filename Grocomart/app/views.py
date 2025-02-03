@@ -20,10 +20,7 @@ import stripe
 import datetime
 # Create your views here.
 
-
 stripe.api_key = settings.STRIPE_SECRET_KEY
-
-
 
 def cart(r):
     if r.user.is_authenticated:
@@ -33,7 +30,7 @@ def cart(r):
 
 
 def index(request):
-    products = Product.objects.all()[:9]
+    products = Product.objects.all().order_by('-id')[:9]
     order = cart(request)
     return render(request, 'app/index.html', {'products':products, 'order':order})
 
