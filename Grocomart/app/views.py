@@ -28,7 +28,6 @@ def cart(r):
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         return order
 
-
 def index(request):
     products = Product.objects.all().order_by('-id')[:9]
     order = cart(request)
@@ -60,7 +59,6 @@ def logout_view(request):
     messages.success(request, ' Logged out Sucessfully!!')
     return redirect("index")
 
-
 def send_activation_email(user, request):
     current_site = get_current_site(request)
     email_subject = 'Activate your account'
@@ -76,7 +74,6 @@ def send_activation_email(user, request):
         send_mail(email_subject, email_body, admin_email , [user.email], fail_silently=False)
     except BadHeaderError:
         return HttpResponse('Invalid header found.')
-
 
 def signup_view(request):
     user = request.user
@@ -97,7 +94,6 @@ def signup_view(request):
             return redirect(url)
         else:
             context['signup_form'] = form
-
     else:
         form = SignupForm()
     
@@ -185,10 +181,8 @@ def checkout(request):
         items = order.orderitem_set.all()
         cartItem = order.get_cart_item
         address = ShippingAddress.objects.filter(customer=customer).values()
-        print(address)
         amount = int(order.get_cart_total * 100)
         key = settings.STRIPE_PUBLISH_KEY
-
     else:
         return redirect('login')
 
@@ -229,8 +223,6 @@ def process_payment(request):
                 send_mail(email_subject, email_body, admin_email , [customer.email], fail_silently=False)
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            
-
     return render(request, 'payment/payment_status.html', {'order':order, 'customer':customer,'address':address, 'items':items })
 
 def invoice(request, id):
@@ -242,9 +234,7 @@ def invoice(request, id):
         items = order_i.orderitem_set.all()
         address = ShippingAddress.objects.filter(customer=customer).values()
 
-
     return render(request, 'payment/invoice.html', {'order_i':order_i, 'address':address, 'customer':customer, 'items':items, 'order':order})
-
 
 def shipping_address(request):
     customer = request.user
@@ -272,7 +262,6 @@ def change_addrs(request):
         messages.error(request, 'Please login to proceed!')
         return redirect('login')
 
-
 def updateItem(request):
     data = json.loads(request.body)
     productId = data['productId']
@@ -293,9 +282,6 @@ def updateItem(request):
         orderItem.delete()
 
     return JsonResponse('Item added!', safe=False)
-
-
-
 
 def contact(request):
     url = request.META.get('HTTP_REFERER')
@@ -337,10 +323,6 @@ def newsletter(request):
             messages.error(request, 'Something went wrong!')
             return redirect(url)
 
-
-
-
-
 def password_reset_request(request):
     current_site = get_current_site(request)
     if request.method == 'POST':
@@ -378,8 +360,6 @@ def password_reset_request(request):
     password_reset_form = PasswordResetForm()
     return render(request=request, template_name="password/password_reset.html", context={"password_reset_form":password_reset_form})
 
-
-
 def activate_user(request, uidb64, token):
 
     try:
@@ -398,8 +378,6 @@ def activate_user(request, uidb64, token):
         return redirect('login')
 
     return render(request, 'registration/activate_failed.html', {"user": user})
-
-
 
 def submit_review(request, p_id):
     url = request.META.get('HTTP_REFERER')
